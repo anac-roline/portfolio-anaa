@@ -115,15 +115,14 @@ export function Projects() {
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
               className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:-translate-y-1 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/5"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+              <div className="relative aspect-[16/10] overflow-hidden bg-[oklch(0.14_0.012_240)]">
                 <img
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-contain p-2 transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent opacity-80" />
-                <span className="absolute left-3 top-3 rounded-full border border-border bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
+                <span className="absolute left-3 top-3 rounded-full border border-border bg-background/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
                   {p.category}
                 </span>
               </div>

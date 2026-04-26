@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
+import { ArrowRight, Instagram, MessageCircle, Sparkles } from "lucide-react";
 import profile from "@/assets/ana-profile.jpg";
+
+const WHATSAPP_URL =
+  "https://wa.me/5561993378679?text=Ol%C3%A1%20Ana%2C%20vim%20pelo%20seu%20portf%C3%B3lio!";
+const INSTAGRAM_URL = "https://instagram.com/anac_roline";
 
 export function Hero() {
   return (
@@ -24,7 +28,7 @@ export function Hero() {
           </span>
 
           <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Ana Caroline Leal
+            Ana Nascimento
             <span className="mt-2 block text-2xl font-medium text-muted-foreground sm:text-3xl">
               <span className="text-gradient">Desenvolvedora</span>{" "}
               <span className="text-muted-foreground/70">&</span>{" "}
@@ -47,11 +51,22 @@ export function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#contact"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.74_0.17_150)]/40 bg-[oklch(0.74_0.17_150)]/10 px-5 py-3 text-sm font-semibold text-[oklch(0.82_0.17_150)] transition-colors hover:bg-[oklch(0.74_0.17_150)] hover:text-background"
+            >
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer noopener"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/40 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
             >
-              <Download className="h-4 w-4" />
-              Currículo
+              <Instagram className="h-4 w-4" />
+              @anac_roline
             </a>
           </div>
 

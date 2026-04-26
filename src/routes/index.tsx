@@ -5,19 +5,20 @@ import { Skills } from "@/components/portfolio/Skills";
 import { Projects } from "@/components/portfolio/Projects";
 import { Timeline } from "@/components/portfolio/Timeline";
 import { Contact } from "@/components/portfolio/Contact";
+import { WhatsAppFab } from "@/components/portfolio/WhatsAppFab";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ana Caroline Leal — Desenvolvedora & Analista de BI" },
+      { title: "Ana Nascimento — Desenvolvedora & Analista de BI" },
       {
         name: "description",
         content:
-          "Portfólio de Ana Caroline Leal, desenvolvedora e analista de BI. Projetos com React, Node, Power BI, SQL Server e Python.",
+          "Portfólio de Ana Nascimento, desenvolvedora e analista de BI. Projetos com React, Node, Power BI, SQL Server e Python.",
       },
       {
         property: "og:title",
-        content: "Ana Caroline Leal — Desenvolvedora & Analista de BI",
+        content: "Ana Nascimento — Desenvolvedora & Analista de BI",
       },
       {
         property: "og:description",
@@ -39,6 +40,7 @@ function Index() {
       <Projects />
       <Timeline />
       <Contact />
+      <WhatsAppFab />
     </main>
   );
 }
