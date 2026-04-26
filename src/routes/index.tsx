@@ -5,6 +5,7 @@ import { Skills } from "@/components/portfolio/Skills";
 import { Projects } from "@/components/portfolio/Projects";
 import { Timeline } from "@/components/portfolio/Timeline";
 import { Contact } from "@/components/portfolio/Contact";
+import { WhatsAppFab } from "@/components/portfolio/WhatsAppFab";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,6 +40,7 @@ function Index() {
       <Projects />
       <Timeline />
       <Contact />
+      <WhatsAppFab />
     </main>
   );
 }
