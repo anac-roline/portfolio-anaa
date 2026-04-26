@@ -16,8 +16,8 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    handle: "in/ana-caroline-leal",
-    href: "https://www.linkedin.com/in/ana-caroline-leal/",
+    handle: "in/ana-c-l-nascimento-171680111",
+    href: "https://www.linkedin.com/in/ana-c-l-nascimento-171680111",
     icon: Linkedin,
   },
   {
@@ -28,8 +28,8 @@ const socials = [
   },
   {
     label: "E-mail",
-    handle: "anaclealnasc@gmail.com",
-    href: "mailto:anaclealnasc@gmail.com",
+    handle: "lealanacaroline00@gmail.com",
+    href: "mailto:lealanacaroline00@gmail.com",
     icon: Mail,
   },
 ];

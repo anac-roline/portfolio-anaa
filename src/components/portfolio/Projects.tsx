@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ExternalLink, Github, X } from "lucide-react";
 import apiImg from "@/assets/project-api.jpg";
 import arduinoImg from "@/assets/project-arduino.jpg";
 import esteticaImg from "@/assets/project-estetica.jpg";
@@ -7,71 +8,123 @@ import esteticaImg from "@/assets/project-estetica.jpg";
 type Project = {
   title: string;
   description: string;
+  longDescription: string;
   image: string;
   tags: string[];
   github?: string;
   demo?: string;
   category: string;
+  highlights: string[];
 };
 
 const projects: Project[] = [
   {
     title: "Dashboard Power BI",
     description:
-      "Modelagem e visualização de dados corporativos com KPIs interativos e drill-through, aplicados na rotina de BI.",
+      "Modelagem e visualização de dados corporativos com KPIs interativos e drill-through.",
+    longDescription:
+      "Conjunto de dashboards desenvolvidos durante o estágio na Mútua, integrando SQL Server com Power BI. Modelagem dimensional, medidas DAX otimizadas e visualizações interativas para apoiar decisões executivas.",
     image: apiImg,
     tags: ["Power BI", "SQL Server", "T-SQL", "DAX"],
     github: "https://github.com/anac-roline/POWER-BI",
     category: "Data & BI",
+    highlights: [
+      "Modelagem star-schema",
+      "Medidas DAX customizadas",
+      "Drill-through entre relatórios",
+      "Atualização incremental",
+    ],
   },
   {
     title: "API do Zero",
     description:
-      "API REST completa para manipulação de dados e integração com aplicações externas, com autenticação e rotas modulares.",
+      "API REST completa para manipulação de dados e integração com aplicações externas.",
+    longDescription:
+      "Construção de uma API REST do zero usando Node.js e Express, com rotas modulares, middlewares de autenticação e padrão MVC. Pensada como projeto-base para entender o ciclo completo de uma API.",
     image: apiImg,
     tags: ["Node.js", "Express", "JavaScript"],
     github: "https://github.com/anac-roline/minha-api",
     category: "Web Dev",
+    highlights: [
+      "Rotas RESTful organizadas",
+      "Middleware de autenticação",
+      "Validação de entrada",
+      "Documentação clara",
+    ],
   },
   {
     title: "Lixeira Automática",
     description:
-      "Sistema IoT com Arduino que detecta aproximação e abre a tampa automaticamente. Projeto base de automação e prototipagem.",
+      "Sistema IoT com Arduino que detecta aproximação e abre a tampa automaticamente.",
+    longDescription:
+      "Projeto de automação com Arduino usando sensor ultrassônico HC-SR04 e servo motor. Detecta a aproximação do usuário e abre a tampa da lixeira sem contato, ideal para ambientes que exigem higiene.",
     image: arduinoImg,
     tags: ["Arduino", "C++", "IoT", "Sensores"],
     github: "https://github.com/anac-roline/lixeira-automatica",
     category: "Embarcados",
+    highlights: [
+      "Sensor ultrassônico HC-SR04",
+      "Servo motor controlado",
+      "Lógica de debounce",
+      "Prototipagem em protoboard",
+    ],
   },
   {
     title: "Interface Sistema de Notas",
     description:
-      "Interface gráfica em Tkinter para gestão de notas acadêmicas, com persistência e usabilidade pensada para o usuário final.",
+      "Interface gráfica em Tkinter para gestão de notas acadêmicas, com persistência.",
+    longDescription:
+      "Aplicação desktop em Python/Tkinter para cadastro e cálculo de médias acadêmicas. Foco em usabilidade, persistência local de dados e organização modular do código.",
     image: apiImg,
     tags: ["Python", "Tkinter", "UX"],
     github: "https://github.com/anac-roline/interface_sistem_de_notas",
     category: "Desktop",
+    highlights: [
+      "GUI nativa em Tkinter",
+      "Persistência em arquivo",
+      "Cálculo automático de médias",
+      "Validação de formulários",
+    ],
   },
   {
     title: "Site Estética",
     description:
-      "Site institucional responsivo para negócio de estética, com galeria, serviços e contato — foco em conversão.",
+      "Site institucional responsivo para negócio de estética, com galeria e contato.",
+    longDescription:
+      "Site institucional desenvolvido com HTML, CSS e JavaScript puro. Layout responsivo, galeria de serviços, formulário de contato e integração com WhatsApp para conversão direta de clientes.",
     image: esteticaImg,
     tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
     github: "https://github.com/anac-roline/Site",
     category: "Web Dev",
+    highlights: [
+      "Layout 100% responsivo",
+      "Galeria de serviços",
+      "Integração WhatsApp",
+      "Performance otimizada",
+    ],
   },
   {
     title: "Hackathon Segurança",
     description:
-      "Projeto desenvolvido na Campus Party Brasília 2025, focado em soluções de segurança da informação.",
+      "Projeto desenvolvido na Campus Party Brasília 2025, focado em segurança da informação.",
+    longDescription:
+      "Solução criada em equipe durante o hackathon da Campus Party Brasília 2025, com foco em conscientização e prevenção de ameaças de segurança da informação para usuários finais.",
     image: esteticaImg,
     tags: ["HTML", "JavaScript", "Hackathon"],
     github: "https://github.com/anac-roline/hackathon_seguranca",
     category: "Hackathon",
+    highlights: [
+      "Desenvolvido em 48h",
+      "Trabalho em equipe",
+      "Tema: cibersegurança",
+      "Prototipagem rápida",
+    ],
   },
 ];
 
 export function Projects() {
+  const [selected, setSelected] = useState<Project | null>(null);
+
   return (
     <section id="projects" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
@@ -90,8 +143,8 @@ export function Projects() {
               Coisas que construí
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Uma seleção dos projetos que melhor representam minha jornada entre
-              dados e desenvolvimento web.
+              Clique em um projeto para ver detalhes, destaques técnicos e a
+              imagem completa.
             </p>
           </div>
           <a
@@ -115,7 +168,12 @@ export function Projects() {
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
               className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:-translate-y-1 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/5"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-[oklch(0.14_0.012_240)]">
+              <button
+                type="button"
+                onClick={() => setSelected(p)}
+                aria-label={`Ver detalhes de ${p.title}`}
+                className="relative block aspect-[16/10] w-full overflow-hidden bg-[oklch(0.14_0.012_240)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
                 <img
                   src={p.image}
                   alt={p.title}
@@ -125,12 +183,21 @@ export function Projects() {
                 <span className="absolute left-3 top-3 rounded-full border border-border bg-background/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
                   {p.category}
                 </span>
-              </div>
+                <span className="absolute inset-0 flex items-end justify-end bg-gradient-to-t from-background/80 via-transparent to-transparent p-3 opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="rounded-full bg-accent px-3 py-1 text-[11px] font-semibold text-accent-foreground">
+                    Ver detalhes
+                  </span>
+                </span>
+              </button>
 
               <div className="flex flex-1 flex-col p-5">
-                <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-accent">
+                <button
+                  type="button"
+                  onClick={() => setSelected(p)}
+                  className="text-left text-lg font-semibold text-foreground transition-colors hover:text-accent focus:outline-none"
+                >
                   {p.title}
-                </h3>
+                </button>
                 <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>
@@ -147,15 +214,23 @@ export function Projects() {
                 </ul>
 
                 <div className="mt-5 flex items-center gap-2 border-t border-border pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setSelected(p)}
+                    className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-xs font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+                  >
+                    Detalhes
+                  </button>
                   {p.github && (
                     <a
                       href={p.github}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-border bg-secondary/40 px-3 py-2 text-xs font-medium text-foreground transition-colors hover:bg-secondary"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-secondary/40 px-3 py-2 text-xs font-medium text-foreground transition-colors hover:bg-secondary"
+                      aria-label="Abrir repositório no GitHub"
                     >
                       <Github className="h-3.5 w-3.5" />
-                      Código
                     </a>
                   )}
                   {p.demo && (
@@ -163,10 +238,11 @@ export function Projects() {
                       href={p.demo}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-xs font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-xs font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+                      aria-label="Abrir demo"
                     >
                       <ExternalLink className="h-3.5 w-3.5" />
-                      Demo
                     </a>
                   )}
                 </div>
@@ -175,6 +251,115 @@ export function Projects() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-background/80 p-4 backdrop-blur-md"
+            onClick={() => setSelected(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={selected.title}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
+            >
+              <button
+                type="button"
+                onClick={() => setSelected(null)}
+                className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-colors hover:bg-secondary"
+                aria-label="Fechar"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <div className="max-h-[85vh] overflow-y-auto">
+                <div className="relative bg-[oklch(0.14_0.012_240)] p-4">
+                  <img
+                    src={selected.image}
+                    alt={selected.title}
+                    className="mx-auto max-h-[55vh] w-auto max-w-full object-contain"
+                  />
+                </div>
+
+                <div className="p-6 sm:p-8">
+                  <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
+                    {selected.category}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-bold tracking-tight">
+                    {selected.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {selected.longDescription}
+                  </p>
+
+                  <h4 className="mt-6 text-xs font-semibold uppercase tracking-wider text-foreground">
+                    Destaques
+                  </h4>
+                  <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                    {selected.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="flex items-start gap-2 rounded-lg border border-border/60 bg-surface-elevated/60 p-3 text-sm text-muted-foreground"
+                      >
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <h4 className="mt-6 text-xs font-semibold uppercase tracking-wider text-foreground">
+                    Tecnologias
+                  </h4>
+                  <ul className="mt-3 flex flex-wrap gap-1.5">
+                    {selected.tags.map((t) => (
+                      <li
+                        key={t}
+                        className="rounded-md border border-border/60 bg-secondary/40 px-2 py-1 font-mono text-[11px] text-muted-foreground"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-7 flex flex-wrap gap-3 border-t border-border pt-5">
+                    {selected.github && (
+                      <a
+                        href={selected.github}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/40 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                      >
+                        <Github className="h-4 w-4" />
+                        Ver no GitHub
+                      </a>
+                    )}
+                    {selected.demo && (
+                      <a
+                        href={selected.demo}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        Abrir demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
