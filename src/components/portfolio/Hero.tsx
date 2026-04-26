@@ -1,0 +1,97 @@
+import { motion } from "framer-motion";
+import { ArrowRight, Download, Sparkles } from "lucide-react";
+import profile from "@/assets/ana-profile.jpg";
+
+export function Hero() {
+  return (
+    <section
+      id="home"
+      className="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32"
+    >
+      {/* Background grid + glow */}
+      <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+      <div className="pointer-events-none absolute -top-24 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl" />
+
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[1.3fr_1fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+            <Sparkles className="h-3 w-3" />
+            Disponível para novas oportunidades
+          </span>
+
+          <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            Ana Caroline Leal
+            <span className="mt-2 block text-2xl font-medium text-muted-foreground sm:text-3xl">
+              <span className="text-gradient">Desenvolvedora</span>{" "}
+              <span className="text-muted-foreground/70">&</span>{" "}
+              <span className="text-gradient">Analista de BI</span>
+            </span>
+          </h1>
+
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Estudante de Ciência da Computação apaixonada por transformar dados em
+            soluções. Construo desde dashboards em Power BI até APIs e interfaces
+            web modernas.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-all hover:shadow-[0_8px_30px_-8px] hover:shadow-accent"
+            >
+              Ver projetos
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/40 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
+            >
+              <Download className="h-4 w-4" />
+              Currículo
+            </a>
+          </div>
+
+          <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8 max-w-md">
+            <div>
+              <dt className="text-xs uppercase tracking-wide text-muted-foreground">Foco</dt>
+              <dd className="mt-1 text-sm font-semibold text-foreground">Data & Web</dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-wide text-muted-foreground">Local</dt>
+              <dd className="mt-1 text-sm font-semibold text-foreground">Brasília · DF</dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-wide text-muted-foreground">Status</dt>
+              <dd className="mt-1 text-sm font-semibold text-accent">Estagiária BI</dd>
+            </div>
+          </dl>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+          className="relative mx-auto"
+        >
+          <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-accent/40 via-transparent to-accent-glow/40 blur-2xl" />
+          <div className="relative aspect-square w-64 overflow-hidden rounded-3xl border border-border bg-surface sm:w-80">
+            <img
+              src={profile}
+              alt="Ana Caroline Leal — Desenvolvedora e Analista de BI"
+              className="h-full w-full object-cover"
+              loading="eager"
+            />
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+          </div>
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-border bg-surface-elevated px-4 py-2 font-mono text-xs text-muted-foreground shadow-xl">
+            <span className="text-accent">●</span> Brasília, BR
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
