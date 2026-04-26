@@ -1,7 +1,19 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
 
 const socials = [
+  {
+    label: "WhatsApp",
+    handle: "(61) 99337-8679",
+    href: "https://wa.me/5561993378679?text=Ol%C3%A1%20Ana%2C%20vim%20pelo%20seu%20portf%C3%B3lio!",
+    icon: MessageCircle,
+  },
+  {
+    label: "Instagram",
+    handle: "@anac_roline",
+    href: "https://instagram.com/anac_roline",
+    icon: Instagram,
+  },
   {
     label: "LinkedIn",
     handle: "in/ana-caroline-leal",
@@ -16,7 +28,7 @@ const socials = [
   },
   {
     label: "E-mail",
-    handle: "Enviar mensagem",
+    handle: "anaclealnasc@gmail.com",
     href: "mailto:anaclealnasc@gmail.com",
     icon: Mail,
   },
@@ -85,7 +97,7 @@ export function Contact() {
         </motion.div>
 
         <footer className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} Ana Caroline Leal. Construído com React + Tailwind.</p>
+          <p>© {new Date().getFullYear()} Ana Nascimento. Construído com React + Tailwind.</p>
           <p className="font-mono">Brasília · DF · Brasil</p>
         </footer>
       </div>

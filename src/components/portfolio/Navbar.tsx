@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
+import avatar from "@/assets/ana-avatar.png";
 
 const links = [
   { href: "#home", label: "Início" },
@@ -33,10 +34,13 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#home" className="group flex items-center gap-2 font-mono text-sm font-medium">
-          <span className="text-accent">{"<"}</span>
-          <span>ana<span className="text-accent">.</span>dev</span>
-          <span className="text-accent">{"/>"}</span>
+        <a href="#home" className="group flex items-center gap-2.5 font-mono text-sm font-medium">
+          <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-surface-elevated">
+            <img src={avatar} alt="Ana Nascimento" className="h-full w-full object-cover" />
+          </span>
+          <span className="hidden sm:inline">
+            ana<span className="text-accent">.</span>nascimento
+          </span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
@@ -53,10 +57,13 @@ export function Navbar() {
         </ul>
 
         <a
-          href="#contact"
-          className="hidden rounded-full border border-accent/40 bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition-all hover:bg-accent hover:text-accent-foreground md:inline-flex"
+          href="https://wa.me/5561993378679?text=Ol%C3%A1%20Ana%2C%20vim%20pelo%20seu%20portf%C3%B3lio!"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="hidden items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition-all hover:bg-accent hover:text-accent-foreground md:inline-flex"
         >
-          Vamos conversar
+          <MessageCircle className="h-4 w-4" />
+          WhatsApp
         </a>
 
         <button
