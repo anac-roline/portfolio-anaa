@@ -3,23 +3,14 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
+import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
     tsconfigPaths(),
-    mode === "development" &&
-      // Lovable component tagger (dev only) — optional, ignored if not installed
-      (() => {
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-require-imports
-          const { componentTagger } = require("lovable-tagger");
-          return componentTagger();
-        } catch {
-          return null;
-        }
-      })(),
+    mode === "development" && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
