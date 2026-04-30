@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { ArrowRight, Instagram, MessageCircle, Sparkles } from "lucide-react";
 import profile from "@/assets/ana-profile.jpg";
 
@@ -7,16 +8,40 @@ const WHATSAPP_URL =
 const INSTAGRAM_URL = "https://instagram.com/anac_roline";
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax layers — different speeds for depth
+  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32"
     >
-      {/* Background grid + glow */}
-      <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl" />
+      {/* Background grid + glow with parallax */}
+      <motion.div
+        style={{ y: gridY }}
+        className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]"
+      />
+      <motion.div
+        style={{ y: glowY }}
+        className="pointer-events-none absolute -top-24 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl"
+      />
+      <motion.div
+        style={{ y: glowY, opacity }}
+        className="pointer-events-none absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-accent-glow/10 blur-3xl"
+      />
 
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[1.3fr_1fr]">
+      <motion.div style={{ y: contentY }} className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[1.3fr_1fr]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -87,6 +112,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div
+          style={{ y: imageY }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
@@ -96,7 +122,7 @@ export function Hero() {
           <div className="relative aspect-square w-64 overflow-hidden rounded-3xl border border-border bg-surface sm:w-80">
             <img
               src={profile}
-              alt="Ana Caroline Leal — Desenvolvedora e Analista de BI"
+              alt="Ana Nascimento — Desenvolvedora e Analista de BI"
               className="h-full w-full object-cover"
               loading="eager"
             />
@@ -106,7 +132,7 @@ export function Hero() {
             <span className="text-accent">●</span> Brasília, BR
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
