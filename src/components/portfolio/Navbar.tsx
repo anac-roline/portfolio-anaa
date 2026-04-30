@@ -34,10 +34,12 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#home" className="group flex items-center gap-2.5 font-mono text-sm font-medium">
-          <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-accent/40 bg-surface-elevated">
-            <img src={avatar} alt="Ana Nascimento" className="h-full w-full object-contain p-1" />
-          </span>
+        <a href="#home" className="group flex items-center gap-3 font-mono text-sm font-medium">
+          <img
+            src={avatar}
+            alt="Ana Nascimento"
+            className="h-10 w-auto object-contain transition-transform group-hover:scale-105 sm:h-11"
+          />
           <span className="hidden sm:inline">
             ana<span className="text-accent">.</span>nascimento
           </span>
