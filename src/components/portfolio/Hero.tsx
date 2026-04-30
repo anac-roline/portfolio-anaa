@@ -112,6 +112,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div
+          style={{ y: imageY }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
@@ -121,7 +122,7 @@ export function Hero() {
           <div className="relative aspect-square w-64 overflow-hidden rounded-3xl border border-border bg-surface sm:w-80">
             <img
               src={profile}
-              alt="Ana Caroline Leal — Desenvolvedora e Analista de BI"
+              alt="Ana Nascimento — Desenvolvedora e Analista de BI"
               className="h-full w-full object-cover"
               loading="eager"
             />
@@ -131,7 +132,7 @@ export function Hero() {
             <span className="text-accent">●</span> Brasília, BR
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
