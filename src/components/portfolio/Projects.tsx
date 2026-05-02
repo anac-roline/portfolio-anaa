@@ -106,6 +106,7 @@ const projects: Project[] = [
     image: hackathonImg,
     imageFit: "cover",
     imagePosition: "center",
+    imageScale: 1.1,
     tags: ["HTML", "JavaScript", "Hackathon"],
     github: "https://github.com/anac-roline/hackathon_seguranca",
     category: "Hackathon",
@@ -191,7 +192,7 @@ export function Projects() {
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
-                  style={{ objectPosition: p.imagePosition ?? "center" }}
+                  style={{ objectPosition: p.imagePosition ?? "center", transform: p.imageScale ? `scale(${p.imageScale})` : undefined }}
                   className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.03] ${
                     (p.imageFit ?? "contain") === "cover"
                       ? "object-cover"
