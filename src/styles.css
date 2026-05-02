@@ -187,4 +187,13 @@
       0 0 0 1px oklch(0.74 0.15 165 / 0.3),
       0 8px 40px -10px oklch(0.74 0.15 165 / 0.4);
   }
+
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+
+  .animate-float {
+    animation: float-y 5s ease-in-out infinite;
+  }
 }

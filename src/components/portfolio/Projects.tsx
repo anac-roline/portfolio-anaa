@@ -26,79 +26,6 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "API do Zero",
-    description:
-      "API REST completa para manipulação de dados e integração com aplicações externas.",
-    longDescription:
-      "Construção de uma API REST do zero usando Node.js e Express, com rotas modulares, middlewares de autenticação e padrão MVC. Pensada como projeto-base para entender o ciclo completo de uma API.",
-    image: apiImg,
-    tags: ["Node.js", "Express", "JavaScript"],
-    github: "https://github.com/anac-roline/minha-api",
-    category: "Web Dev",
-    highlights: [
-      "Rotas RESTful organizadas",
-      "Middleware de autenticação",
-      "Validação de entrada",
-      "Documentação clara",
-    ],
-  },
-  {
-    title: "Lixeira Automática",
-    description:
-      "Sistema IoT com Arduino que detecta aproximação e abre a tampa automaticamente.",
-    longDescription:
-      "Projeto de automação com Arduino usando sensor ultrassônico HC-SR04 e servo motor. Detecta a aproximação do usuário e abre a tampa da lixeira sem contato, ideal para ambientes que exigem higiene.",
-    image: lixeiraImg,
-    imageFit: "cover",
-    imagePosition: "center",
-    tags: ["Arduino", "C++", "IoT", "Sensores"],
-    github: "https://github.com/anac-roline/lixeira-automatica",
-    category: "Embarcados",
-    highlights: [
-      "Sensor ultrassônico HC-SR04",
-      "Servo motor controlado",
-      "Lógica de debounce",
-      "Prototipagem em protoboard",
-    ],
-  },
-  {
-    title: "Interface Sistema de Notas",
-    description:
-      "Interface gráfica em Tkinter para gestão de notas acadêmicas, com persistência.",
-    longDescription:
-      "Aplicação desktop em Python/Tkinter para cadastro e cálculo de médias acadêmicas. Foco em usabilidade, persistência local de dados e organização modular do código.",
-    image: notasImg,
-    imageScale: 1.25,
-    tags: ["Python", "Tkinter", "UX"],
-    github: "https://github.com/anac-roline/interface_sistem_de_notas",
-    category: "Desktop",
-    highlights: [
-      "GUI nativa em Tkinter",
-      "Persistência em arquivo",
-      "Cálculo automático de médias",
-      "Validação de formulários",
-    ],
-  },
-  {
-    title: "Site Estética",
-    description:
-      "Site institucional responsivo para negócio de estética, com galeria e contato.",
-    longDescription:
-      "Site institucional desenvolvido com HTML, CSS e JavaScript puro. Layout responsivo, galeria de serviços, formulário de contato e integração com WhatsApp para conversão direta de clientes.",
-    image: esteticaImg,
-    imageFit: "contain",
-    imagePosition: "center",
-    tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
-    github: "https://github.com/anac-roline/Site",
-    category: "Web Dev",
-    highlights: [
-      "Layout 100% responsivo",
-      "Galeria de serviços",
-      "Integração WhatsApp",
-      "Performance otimizada",
-    ],
-  },
-  {
     title: "Hackathon Segurança",
     description:
       "Projeto desenvolvido na Campus Party Brasília 2025, focado em segurança da informação.",
@@ -133,6 +60,79 @@ const projects: Project[] = [
       "Hierarquia tarefa → plano de ação",
       "Tema visual personalizado",
       "Rotina diária estruturada",
+    ],
+  },
+  {
+    title: "Site Estética",
+    description:
+      "Site institucional responsivo para negócio de estética, com galeria e contato.",
+    longDescription:
+      "Site institucional desenvolvido com HTML, CSS e JavaScript puro. Layout responsivo, galeria de serviços, formulário de contato e integração com WhatsApp para conversão direta de clientes.",
+    image: esteticaImg,
+    imageFit: "contain",
+    imagePosition: "center",
+    tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
+    github: "https://github.com/anac-roline/Site",
+    category: "Web Dev",
+    highlights: [
+      "Layout 100% responsivo",
+      "Galeria de serviços",
+      "Integração WhatsApp",
+      "Performance otimizada",
+    ],
+  },
+  {
+    title: "API do Zero",
+    description:
+      "API REST completa para manipulação de dados e integração com aplicações externas.",
+    longDescription:
+      "Construção de uma API REST do zero usando Node.js e Express, com rotas modulares, middlewares de autenticação e padrão MVC. Pensada como projeto-base para entender o ciclo completo de uma API.",
+    image: apiImg,
+    tags: ["Node.js", "Express", "JavaScript"],
+    github: "https://github.com/anac-roline/minha-api",
+    category: "Web Dev",
+    highlights: [
+      "Rotas RESTful organizadas",
+      "Middleware de autenticação",
+      "Validação de entrada",
+      "Documentação clara",
+    ],
+  },
+  {
+    title: "Interface Sistema de Notas",
+    description:
+      "Interface gráfica em Tkinter para gestão de notas acadêmicas, com persistência.",
+    longDescription:
+      "Aplicação desktop em Python/Tkinter para cadastro e cálculo de médias acadêmicas. Foco em usabilidade, persistência local de dados e organização modular do código.",
+    image: notasImg,
+    imageScale: 1.25,
+    tags: ["Python", "Tkinter", "UX"],
+    github: "https://github.com/anac-roline/interface_sistem_de_notas",
+    category: "Desktop",
+    highlights: [
+      "GUI nativa em Tkinter",
+      "Persistência em arquivo",
+      "Cálculo automático de médias",
+      "Validação de formulários",
+    ],
+  },
+  {
+    title: "Lixeira Automática",
+    description:
+      "Sistema IoT com Arduino que detecta aproximação e abre a tampa automaticamente.",
+    longDescription:
+      "Projeto de automação com Arduino usando sensor ultrassônico HC-SR04 e servo motor. Detecta a aproximação do usuário e abre a tampa da lixeira sem contato, ideal para ambientes que exigem higiene.",
+    image: lixeiraImg,
+    imageFit: "cover",
+    imagePosition: "center",
+    tags: ["Arduino", "C++", "IoT", "Sensores"],
+    github: "https://github.com/anac-roline/lixeira-automatica",
+    category: "Embarcados",
+    highlights: [
+      "Sensor ultrassônico HC-SR04",
+      "Servo motor controlado",
+      "Lógica de debounce",
+      "Prototipagem em protoboard",
     ],
   },
 ];
