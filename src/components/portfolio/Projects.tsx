@@ -2,14 +2,19 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, Github, X } from "lucide-react";
 import apiImg from "@/assets/project-api.jpg";
-import arduinoImg from "@/assets/project-arduino.jpg";
 import esteticaImg from "@/assets/project-estetica.jpg";
+import lixeiraImg from "@/assets/project-lixeira.jpg";
+import notasImg from "@/assets/project-notas.png";
+import hackathonImg from "@/assets/project-hackathon.jpg";
+import checklistImg from "@/assets/project-checklist.png";
 
 type Project = {
   title: string;
   description: string;
   longDescription: string;
   image: string;
+  imageFit?: "cover" | "contain";
+  imagePosition?: string;
   tags: string[];
   github?: string;
   demo?: string;
@@ -58,7 +63,7 @@ const projects: Project[] = [
       "Sistema IoT com Arduino que detecta aproximação e abre a tampa automaticamente.",
     longDescription:
       "Projeto de automação com Arduino usando sensor ultrassônico HC-SR04 e servo motor. Detecta a aproximação do usuário e abre a tampa da lixeira sem contato, ideal para ambientes que exigem higiene.",
-    image: arduinoImg,
+    image: lixeiraImg,
     tags: ["Arduino", "C++", "IoT", "Sensores"],
     github: "https://github.com/anac-roline/lixeira-automatica",
     category: "Embarcados",
@@ -75,7 +80,7 @@ const projects: Project[] = [
       "Interface gráfica em Tkinter para gestão de notas acadêmicas, com persistência.",
     longDescription:
       "Aplicação desktop em Python/Tkinter para cadastro e cálculo de médias acadêmicas. Foco em usabilidade, persistência local de dados e organização modular do código.",
-    image: apiImg,
+    image: notasImg,
     tags: ["Python", "Tkinter", "UX"],
     github: "https://github.com/anac-roline/interface_sistem_de_notas",
     category: "Desktop",
@@ -93,6 +98,8 @@ const projects: Project[] = [
     longDescription:
       "Site institucional desenvolvido com HTML, CSS e JavaScript puro. Layout responsivo, galeria de serviços, formulário de contato e integração com WhatsApp para conversão direta de clientes.",
     image: esteticaImg,
+    imageFit: "cover",
+    imagePosition: "top",
     tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
     github: "https://github.com/anac-roline/Site",
     category: "Web Dev",
@@ -109,7 +116,9 @@ const projects: Project[] = [
       "Projeto desenvolvido na Campus Party Brasília 2025, focado em segurança da informação.",
     longDescription:
       "Solução criada em equipe durante o hackathon da Campus Party Brasília 2025, com foco em conscientização e prevenção de ameaças de segurança da informação para usuários finais.",
-    image: esteticaImg,
+    image: hackathonImg,
+    imageFit: "cover",
+    imagePosition: "center",
     tags: ["HTML", "JavaScript", "Hackathon"],
     github: "https://github.com/anac-roline/hackathon_seguranca",
     category: "Hackathon",
@@ -118,6 +127,23 @@ const projects: Project[] = [
       "Trabalho em equipe",
       "Tema: cibersegurança",
       "Prototipagem rápida",
+    ],
+  },
+  {
+    title: "Checklist de Produtividade",
+    description:
+      "Planilha de organização pessoal com tema lúdico (Rapunzel), agrupando tarefas diárias por contexto.",
+    longDescription:
+      "Checklist de produtividade pessoal — AnaCode — montado em planilha com hierarquia de tarefas e plano de ação. Agrupa rotinas de casa, estudo e cuidado com pets em blocos colapsáveis para facilitar o foco diário.",
+    image: checklistImg,
+    imageFit: "contain",
+    tags: ["Produtividade", "Organização", "Planilha"],
+    category: "Pessoal",
+    highlights: [
+      "Tarefas agrupadas por contexto",
+      "Hierarquia tarefa → plano de ação",
+      "Tema visual personalizado",
+      "Rotina diária estruturada",
     ],
   },
 ];
@@ -178,7 +204,12 @@ export function Projects() {
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
-                  className="h-full w-full object-contain p-2 transition-transform duration-700 group-hover:scale-[1.03]"
+                  style={{ objectPosition: p.imagePosition ?? "center" }}
+                  className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.03] ${
+                    (p.imageFit ?? "contain") === "cover"
+                      ? "object-cover"
+                      : "object-contain p-2"
+                  }`}
                 />
                 <span className="absolute left-3 top-3 rounded-full border border-border bg-background/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
                   {p.category}
