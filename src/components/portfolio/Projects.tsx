@@ -2,8 +2,11 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, Github, X } from "lucide-react";
 import apiImg from "@/assets/project-api.jpg";
-import arduinoImg from "@/assets/project-arduino.jpg";
 import esteticaImg from "@/assets/project-estetica.jpg";
+import lixeiraImg from "@/assets/project-lixeira.jpg";
+import notasImg from "@/assets/project-notas.png";
+import hackathonImg from "@/assets/project-hackathon.jpg";
+import checklistImg from "@/assets/project-checklist.png";
 
 type Project = {
   title: string;
