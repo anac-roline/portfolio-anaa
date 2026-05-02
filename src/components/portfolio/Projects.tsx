@@ -16,6 +16,7 @@ type Project = {
   image: string;
   imageFit?: "cover" | "contain";
   imagePosition?: string;
+  imageScale?: number;
   tags: string[];
   github?: string;
   demo?: string;
@@ -48,6 +49,8 @@ const projects: Project[] = [
     longDescription:
       "Projeto de automação com Arduino usando sensor ultrassônico HC-SR04 e servo motor. Detecta a aproximação do usuário e abre a tampa da lixeira sem contato, ideal para ambientes que exigem higiene.",
     image: lixeiraImg,
+    imageFit: "cover",
+    imagePosition: "center",
     tags: ["Arduino", "C++", "IoT", "Sensores"],
     github: "https://github.com/anac-roline/lixeira-automatica",
     category: "Embarcados",
@@ -103,6 +106,7 @@ const projects: Project[] = [
     image: hackathonImg,
     imageFit: "cover",
     imagePosition: "center",
+    imageScale: 1.1,
     tags: ["HTML", "JavaScript", "Hackathon"],
     github: "https://github.com/anac-roline/hackathon_seguranca",
     category: "Hackathon",
@@ -188,7 +192,7 @@ export function Projects() {
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
-                  style={{ objectPosition: p.imagePosition ?? "center" }}
+                  style={{ objectPosition: p.imagePosition ?? "center", transform: p.imageScale ? `scale(${p.imageScale})` : undefined }}
                   className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.03] ${
                     (p.imageFit ?? "contain") === "cover"
                       ? "object-cover"
