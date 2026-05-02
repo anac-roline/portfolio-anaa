@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Instagram, MessageCircle, Sparkles } from "lucide-react";
-import profile from "@/assets/ana-profile.jpg";
+import { ArrowRight, Instagram, MessageCircle } from "lucide-react";
+import profile from "@/assets/ana-profile.png";
 
 const WHATSAPP_URL =
   "https://wa.me/5561993378679?text=Ol%C3%A1%20Ana%2C%20vim%20pelo%20seu%20portf%C3%B3lio!";
@@ -47,10 +47,6 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-            <Sparkles className="h-3 w-3" />
-            Disponível para novas oportunidades
-          </span>
 
           <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             Ana Nascimento
@@ -118,15 +114,14 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
           className="relative mx-auto"
         >
-          <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-accent/40 via-transparent to-accent-glow/40 blur-2xl" />
-          <div className="relative aspect-square w-64 overflow-hidden rounded-3xl border border-border bg-surface sm:w-80">
+          <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-accent/30 via-transparent to-accent-glow/30 blur-3xl" />
+          <div className="relative aspect-square w-64 sm:w-80 animate-float">
             <img
               src={profile}
               alt="Ana Nascimento — Desenvolvedora e Analista de BI"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.5)]"
               loading="eager"
             />
-            <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
           </div>
           <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-border bg-surface-elevated px-4 py-2 font-mono text-xs text-muted-foreground shadow-xl">
             <span className="text-accent">●</span> Brasília, BR
