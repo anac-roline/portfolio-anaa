@@ -61,7 +61,7 @@ const projects: Project[] = [
       "Sistema IoT com Arduino que detecta aproximação e abre a tampa automaticamente.",
     longDescription:
       "Projeto de automação com Arduino usando sensor ultrassônico HC-SR04 e servo motor. Detecta a aproximação do usuário e abre a tampa da lixeira sem contato, ideal para ambientes que exigem higiene.",
-    image: arduinoImg,
+    image: lixeiraImg,
     tags: ["Arduino", "C++", "IoT", "Sensores"],
     github: "https://github.com/anac-roline/lixeira-automatica",
     category: "Embarcados",
