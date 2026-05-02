@@ -13,6 +13,8 @@ type Project = {
   description: string;
   longDescription: string;
   image: string;
+  imageFit?: "cover" | "contain";
+  imagePosition?: string;
   tags: string[];
   github?: string;
   demo?: string;
