@@ -80,7 +80,7 @@ const projects: Project[] = [
       "Interface gráfica em Tkinter para gestão de notas acadêmicas, com persistência.",
     longDescription:
       "Aplicação desktop em Python/Tkinter para cadastro e cálculo de médias acadêmicas. Foco em usabilidade, persistência local de dados e organização modular do código.",
-    image: apiImg,
+    image: notasImg,
     tags: ["Python", "Tkinter", "UX"],
     github: "https://github.com/anac-roline/interface_sistem_de_notas",
     category: "Desktop",
@@ -98,6 +98,8 @@ const projects: Project[] = [
     longDescription:
       "Site institucional desenvolvido com HTML, CSS e JavaScript puro. Layout responsivo, galeria de serviços, formulário de contato e integração com WhatsApp para conversão direta de clientes.",
     image: esteticaImg,
+    imageFit: "cover",
+    imagePosition: "top",
     tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
     github: "https://github.com/anac-roline/Site",
     category: "Web Dev",
@@ -114,7 +116,9 @@ const projects: Project[] = [
       "Projeto desenvolvido na Campus Party Brasília 2025, focado em segurança da informação.",
     longDescription:
       "Solução criada em equipe durante o hackathon da Campus Party Brasília 2025, com foco em conscientização e prevenção de ameaças de segurança da informação para usuários finais.",
-    image: esteticaImg,
+    image: hackathonImg,
+    imageFit: "cover",
+    imagePosition: "center",
     tags: ["HTML", "JavaScript", "Hackathon"],
     github: "https://github.com/anac-roline/hackathon_seguranca",
     category: "Hackathon",
@@ -123,6 +127,23 @@ const projects: Project[] = [
       "Trabalho em equipe",
       "Tema: cibersegurança",
       "Prototipagem rápida",
+    ],
+  },
+  {
+    title: "Checklist de Produtividade",
+    description:
+      "Planilha de organização pessoal com tema lúdico (Rapunzel), agrupando tarefas diárias por contexto.",
+    longDescription:
+      "Checklist de produtividade pessoal — AnaCode — montado em planilha com hierarquia de tarefas e plano de ação. Agrupa rotinas de casa, estudo e cuidado com pets em blocos colapsáveis para facilitar o foco diário.",
+    image: checklistImg,
+    imageFit: "contain",
+    tags: ["Produtividade", "Organização", "Planilha"],
+    category: "Pessoal",
+    highlights: [
+      "Tarefas agrupadas por contexto",
+      "Hierarquia tarefa → plano de ação",
+      "Tema visual personalizado",
+      "Rotina diária estruturada",
     ],
   },
 ];
