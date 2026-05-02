@@ -204,7 +204,12 @@ export function Projects() {
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
-                  className="h-full w-full object-contain p-2 transition-transform duration-700 group-hover:scale-[1.03]"
+                  style={{ objectPosition: p.imagePosition ?? "center" }}
+                  className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.03] ${
+                    (p.imageFit ?? "contain") === "cover"
+                      ? "object-cover"
+                      : "object-contain p-2"
+                  }`}
                 />
                 <span className="absolute left-3 top-3 rounded-full border border-border bg-background/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
                   {p.category}
