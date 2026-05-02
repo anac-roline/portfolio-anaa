@@ -17,6 +17,7 @@ type Project = {
   imageFit?: "cover" | "contain";
   imagePosition?: string;
   imageScale?: number;
+  imageBg?: string;
   tags: string[];
   github?: string;
   demo?: string;
@@ -71,6 +72,7 @@ const projects: Project[] = [
     image: esteticaImg,
     imageFit: "contain",
     imagePosition: "center",
+    imageBg: "#ffffff",
     tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
     github: "https://github.com/anac-roline/Site",
     category: "Web Dev",
@@ -187,6 +189,7 @@ export function Projects() {
                 type="button"
                 onClick={() => setSelected(p)}
                 aria-label={`Ver detalhes de ${p.title}`}
+                style={p.imageBg ? { backgroundColor: p.imageBg } : undefined}
                 className="relative block aspect-[16/10] w-full overflow-hidden bg-[oklch(0.14_0.012_240)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <img
