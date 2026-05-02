@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, Github, X } from "lucide-react";
 import apiImg from "@/assets/project-api.jpg";
 import esteticaImg from "@/assets/project-estetica.jpg";
+
 import lixeiraImg from "@/assets/project-lixeira.jpg";
 import notasImg from "@/assets/project-notas.png";
 import hackathonImg from "@/assets/project-hackathon.jpg";
@@ -23,23 +24,6 @@ type Project = {
 };
 
 const projects: Project[] = [
-  {
-    title: "Dashboard Power BI",
-    description:
-      "Modelagem e visualização de dados corporativos com KPIs interativos e drill-through.",
-    longDescription:
-      "Conjunto de dashboards desenvolvidos durante o estágio na Mútua, integrando SQL Server com Power BI. Modelagem dimensional, medidas DAX otimizadas e visualizações interativas para apoiar decisões executivas.",
-    image: apiImg,
-    tags: ["Power BI", "SQL Server", "T-SQL", "DAX"],
-    github: "https://github.com/anac-roline/POWER-BI",
-    category: "Data & BI",
-    highlights: [
-      "Modelagem star-schema",
-      "Medidas DAX customizadas",
-      "Drill-through entre relatórios",
-      "Atualização incremental",
-    ],
-  },
   {
     title: "API do Zero",
     description:
