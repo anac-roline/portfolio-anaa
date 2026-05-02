@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Instagram, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowRight, Instagram, MessageCircle } from "lucide-react";
 import profile from "@/assets/ana-profile.png";
 
 const WHATSAPP_URL =
