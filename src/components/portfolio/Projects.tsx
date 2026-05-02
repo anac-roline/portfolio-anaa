@@ -68,7 +68,7 @@ const projects: Project[] = [
     longDescription:
       "Aplicação desktop em Python/Tkinter para cadastro e cálculo de médias acadêmicas. Foco em usabilidade, persistência local de dados e organização modular do código.",
     image: notasImg,
-    imageScale: 1.1,
+    imageScale: 1.25,
     tags: ["Python", "Tkinter", "UX"],
     github: "https://github.com/anac-roline/interface_sistem_de_notas",
     category: "Desktop",
@@ -86,7 +86,7 @@ const projects: Project[] = [
     longDescription:
       "Site institucional desenvolvido com HTML, CSS e JavaScript puro. Layout responsivo, galeria de serviços, formulário de contato e integração com WhatsApp para conversão direta de clientes.",
     image: esteticaImg,
-    imageFit: "cover",
+    imageFit: "contain",
     imagePosition: "center",
     tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
     github: "https://github.com/anac-roline/Site",
