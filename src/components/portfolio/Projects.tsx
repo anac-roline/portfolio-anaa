@@ -16,6 +16,7 @@ type Project = {
   image: string;
   imageFit?: "cover" | "contain";
   imagePosition?: string;
+  imageScale?: number;
   tags: string[];
   github?: string;
   demo?: string;
@@ -48,6 +49,8 @@ const projects: Project[] = [
     longDescription:
       "Projeto de automação com Arduino usando sensor ultrassônico HC-SR04 e servo motor. Detecta a aproximação do usuário e abre a tampa da lixeira sem contato, ideal para ambientes que exigem higiene.",
     image: lixeiraImg,
+    imageFit: "cover",
+    imagePosition: "center",
     tags: ["Arduino", "C++", "IoT", "Sensores"],
     github: "https://github.com/anac-roline/lixeira-automatica",
     category: "Embarcados",
