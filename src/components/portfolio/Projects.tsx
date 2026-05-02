@@ -69,8 +69,9 @@ const projects: Project[] = [
     longDescription:
       "Site institucional desenvolvido com HTML, CSS e JavaScript puro. Layout responsivo, galeria de serviços, formulário de contato e integração com WhatsApp para conversão direta de clientes.",
     image: esteticaImg,
-    imageFit: "cover",
+    imageFit: "contain",
     imagePosition: "center",
+    imageScale: 1.35,
     tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
     github: "https://github.com/anac-roline/Site",
     category: "Web Dev",
