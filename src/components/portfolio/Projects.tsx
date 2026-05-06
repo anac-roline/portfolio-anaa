@@ -71,7 +71,7 @@ const projects: Project[] = [
     image: esteticaImg,
     imageFit: "contain",
     imagePosition: "center",
-    imageScale: 1.35,
+    imageScale: 0.9,
     tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
     github: "https://github.com/anac-roline/Site",
     category: "Web Dev",
