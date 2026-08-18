@@ -90,9 +90,9 @@ function answer(input: string): string {
   if (/(projeto|portf|trabalho|case)/.test(q))
     return "Você encontra os cases na página PROJETOS, com detalhes técnicos de cada entrega.";
   if (/(orçamento|orcamento|preç|prec|contrat|proposta|valor)/.test(q))
-    return `Para orçamentos, o melhor canal é o WhatsApp: ${contacts.whatsapp.href}\n\nEnvie o contexto do projeto e retornamos uma proposta objetiva em até 24h.\n\nOutros canais:\n${contactLinks}`;
+    return `Para orçamentos, o melhor canal é o WhatsApp: [${contacts.whatsapp.handle}](${contacts.whatsapp.href})\n\nEnvie o contexto do projeto e retornamos uma proposta objetiva em até 24h.\n\nOutros canais:\n${contactLinks}`;
   if (/(contato|telefone|whatsapp|email|e-mail|instagram|linkedin|github|redes?|falar|fale|ligar|mensagem)/.test(q))
-    return `Aqui estão os canais de contato:\n${contactLinks}\n\nO WhatsApp é o mais rápido: ${contacts.whatsapp.href}`;
+    return `Aqui estão os canais de contato:\n${contactLinks}\n\nO WhatsApp é o mais rápido: [${contacts.whatsapp.handle}](${contacts.whatsapp.href})`;
   if (/(onde|local|cidade|brasília|brasilia|endere)/.test(q))
     return "A operação é conduzida em Brasília, DF, com atendimento remoto para todo o Brasil.";
   if (/(quem|presidente|ana|fundad)/.test(q))
