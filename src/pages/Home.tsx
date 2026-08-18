@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, BarChart3, Cpu, Database } from "lucide-react";
 import { ParticleField } from "@/components/nex/ParticleField";
+import { ParallaxSection } from "@/components/nex/ParallaxSection";
 import heroImage from "@/assets/header-home.jpg";
+import ctaImage from "@/assets/cta-parallax.jpg.asset.json";
 
 const pillars = [
   {
@@ -115,21 +117,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 sm:py-32">
-        <h2 className="text-3xl font-light tracking-tight sm:text-4xl">
-          Tem um desafio de dados ou produto?
-        </h2>
-        <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-          Conte o contexto e retornamos com uma proposta objetiva.
-        </p>
-        <Link
-          to="/contato"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90"
-        >
-          FALE CONOSCO
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </section>
+      <ParallaxSection
+        image={ctaImage.url}
+        className="border-y border-border"
+        overlayClassName="bg-surface-deep/75"
+      >
+        <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
+          <h2 className="text-3xl font-light tracking-tight text-inverse sm:text-4xl">
+            Tem um desafio de dados ou produto?
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-inverse-muted">
+            Conte o contexto e retornamos com uma proposta objetiva.
+          </p>
+          <Link
+            to="/contato"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90"
+          >
+            FALE CONOSCO
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </ParallaxSection>
     </>
   );
 }
