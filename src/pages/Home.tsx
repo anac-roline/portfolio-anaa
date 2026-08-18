@@ -4,7 +4,7 @@ import { ArrowRight, BarChart3, Cpu, Database } from "lucide-react";
 import { ParticleField } from "@/components/nex/ParticleField";
 import { ParallaxSection } from "@/components/nex/ParallaxSection";
 import heroImage from "@/assets/header-home.jpg";
-import ctaImage from "@/assets/cta-parallax.jpg.asset.json";
+import ctaImage from "@/assets/cta-parallax.jpg";
 
 const pillars = [
   {
