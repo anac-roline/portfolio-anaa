@@ -1,7 +1,43 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Send, X } from "lucide-react";
-import chatbotIcon from "@/assets/chatbot-icon.png.asset.json";
+
+function RobotIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M12 26h-2c-2.2 0-4 1.8-4 4v8c0 2.2 1.8 4 4 4h2M52 26h2c2.2 0 4 1.8 4 4v8c0 2.2-1.8 4-4 4h-2"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 16h28c4.4 0 8 3.6 8 8v22c0 4.4-3.6 8-8 8H38l-6 6-6-6H18c-4.4 0-8-3.6-8-8V24c0-4.4 3.6-8 8-8z"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinejoin="round"
+      />
+      <circle cx="26" cy="32" r="4" fill="currentColor" />
+      <circle cx="38" cy="32" r="4" fill="currentColor" />
+      <path
+        d="M28 42c0 2.2 1.8 4 4 4s4-1.8 4-4h-8z"
+        fill="currentColor"
+      />
+      <path
+        d="M32 8v-6M32 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 type Msg = { from: "bot" | "user"; text: string };
 
