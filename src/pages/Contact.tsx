@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { PageHero } from "@/components/nex/PageHero";
+import headerContact from "@/assets/header-contact.jpg";
 import {
   ArrowUpRight,
   Github,
@@ -43,20 +45,26 @@ const channels = [
 
 export default function Contact() {
   return (
-    <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 sm:pt-36 pb-24 sm:pt-44">
-      <p className="text-[11px] tracking-[0.32em] text-accent">CONTATO</p>
+    <>
+      <PageHero
+        image={headerContact}
+        eyebrow="CONTATO"
+        title={
+          <>
+            Vamos construir
+            <span className="block font-semibold">algo juntos.</span>
+          </>
+        }
+      />
 
-      <div className="mt-10 grid gap-16 lg:grid-cols-[1fr_1fr]">
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      <div className="grid gap-16 lg:grid-cols-[1fr_1fr]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl font-light leading-tight tracking-tight sm:text-5xl">
-            Vamos construir
-            <span className="block font-semibold">algo juntos.</span>
-          </h1>
-          <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">
+          <p className="max-w-md leading-relaxed text-muted-foreground">
             A NEX está aberta a projetos de desenvolvimento, inteligência de
             dados e colaborações open-source. Escolha o canal de sua preferência
             - respondemos em até 24h.

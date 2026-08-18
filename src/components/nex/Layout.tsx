@@ -44,7 +44,7 @@ export function Layout() {
             <NexLogo withWordmark={false} tone={overHero ? "inverse" : "default"} />
           </Link>
 
-          <ul className="hidden items-center gap-8 md:flex">
+          <ul className="ml-auto hidden items-center justify-end gap-8 md:flex">
             {links.map((l) => (
               <li key={l.to}>
                 <NavLink
@@ -70,7 +70,7 @@ export function Layout() {
 
           <Link
             to="/contato"
-            className="hidden rounded-full bg-accent px-5 py-2.5 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90 md:inline-flex"
+            className="ml-8 hidden rounded-full bg-accent px-5 py-2.5 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90 md:inline-flex"
           >
             FALE CONOSCO
           </Link>
@@ -87,7 +87,7 @@ export function Layout() {
 
         {open && (
           <div className="border-t border-border bg-background md:hidden">
-            <ul className="flex flex-col p-4">
+            <ul className="flex flex-col items-end p-4">
               {links.map((l) => (
                 <li key={l.to}>
                   <NavLink
