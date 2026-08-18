@@ -25,7 +25,7 @@ const journey = [
     icon: Sparkles,
     title: "Projetos & Hackathons",
     period: "Contínuo",
-    text: "De IoT com Arduino a APIs Node, incluindo hackathons da Campus Party.",
+    text: "IoT — Arduino a APIs Node, incluindo hackathons. Estamos todo ano na Campus Party.",
   },
 ];
 
