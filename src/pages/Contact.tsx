@@ -43,7 +43,7 @@ const channels = [
 
 export default function Contact() {
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-36 pb-24 sm:pt-44">
+    <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 sm:pt-36 pb-24 sm:pt-44">
       <p className="text-[11px] tracking-[0.32em] text-accent">CONTATO</p>
 
       <div className="mt-10 grid gap-16 lg:grid-cols-[1fr_1fr]">

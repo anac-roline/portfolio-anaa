@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { NexLogo } from "./Logo";
+import { ChatWidget } from "./ChatWidget";
 
 const links = [
   { to: "/", label: "INÍCIO" },
@@ -38,9 +39,9 @@ export function Layout() {
             : "border-b border-transparent"
         } ${overHero ? "text-inverse" : ""}`}
       >
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
           <Link to="/" aria-label="NEX - início">
-            <NexLogo tone={overHero ? "inverse" : "default"} />
+            <NexLogo withWordmark={false} tone={overHero ? "inverse" : "default"} />
           </Link>
 
           <ul className="hidden items-center gap-8 md:flex">
@@ -108,7 +109,7 @@ export function Layout() {
       </main>
 
       <footer className="border-t border-border bg-surface">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:px-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <NexLogo />
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
@@ -129,11 +130,13 @@ export function Layout() {
           </ul>
         </div>
         <div className="border-t border-border">
-          <p className="mx-auto max-w-6xl px-6 py-5 text-xs text-muted-foreground">
+          <p className="mx-auto max-w-6xl px-4 py-5 text-xs sm:px-6 text-muted-foreground">
             © {new Date().getFullYear()} NEX - Ana Nascimento.
           </p>
         </div>
       </footer>
+
+      <ChatWidget />
     </div>
   );
 }

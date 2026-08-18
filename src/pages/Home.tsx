@@ -32,7 +32,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative mx-auto w-full max-w-4xl px-6 text-center"
+          className="relative mx-auto w-full max-w-4xl px-5 text-center"
         >
           <p className="text-[11px] tracking-[0.4em] text-accent-soft">
             NEX · TECNOLOGIA & DADOS
@@ -65,7 +65,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-32">
         <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="text-[11px] tracking-[0.32em] text-accent">
@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       <section className="border-y border-border bg-surface">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-16 sm:grid-cols-4">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-14 sm:px-6 sm:py-16 sm:grid-cols-4">
           {[
             ["06+", "Projetos entregues"],
             ["BI", "Foco em dados"],
@@ -121,7 +121,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 py-24 text-center sm:py-32">
+      <section className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 sm:py-32">
         <h2 className="text-3xl font-light tracking-tight sm:text-4xl">
           Tem um desafio de dados ou produto?
         </h2>
