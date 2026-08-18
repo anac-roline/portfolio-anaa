@@ -86,7 +86,7 @@ export function Layout() {
         </nav>
 
         {open && (
-          <div className="border-t border-border bg-background/85 backdrop-blur-xl md:hidden">
+          <div className="border-t border-border/60 bg-background/40 backdrop-blur-2xl md:hidden">
             <ul className="flex flex-col items-end p-4">
               {links.map((l) => (
                 <li key={l.to}>
