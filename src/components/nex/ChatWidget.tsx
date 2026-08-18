@@ -116,11 +116,9 @@ export function ChatWidget() {
             className="fixed bottom-20 right-4 z-[70] flex max-h-[70vh] w-[min(22rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-xl"
           >
             <div className="flex items-center gap-3 border-b border-border px-4 py-3">
-              <img
-                src={chatbotIcon.url}
-                alt="Assistente NEX"
-                className="h-8 w-8 object-contain dark:invert"
-              />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                <RobotIcon className="h-5 w-5" />
+              </div>
               <p className="text-xs text-muted-foreground">
                 Respostas rápidas sobre a organização
               </p>
