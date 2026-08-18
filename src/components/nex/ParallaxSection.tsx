@@ -13,7 +13,7 @@ export function ParallaxSection({
   image,
   children,
   className = "",
-  intensity = 0.15,
+  intensity = 0.45,
   overlayClassName = "",
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -36,7 +36,7 @@ export function ParallaxSection({
         width={1920}
         height={1088}
         loading="lazy"
-        className="absolute -top-[15%] left-0 h-[130%] w-full object-cover"
+        className="absolute -top-[30%] left-0 h-[160%] w-full object-cover"
         style={{ y, willChange: "transform" }}
       />
       {overlayClassName && (

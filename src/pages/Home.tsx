@@ -122,7 +122,7 @@ export default function Home() {
         className="border-y border-border"
         overlayClassName="bg-surface-deep/50"
       >
-        <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
+        <div className="mx-auto flex min-h-[70svh] max-w-4xl flex-col items-center justify-center px-4 py-32 text-center sm:px-6 sm:py-40">
           <h2 className="text-3xl font-light tracking-tight text-inverse sm:text-4xl">
             Tem um desafio de dados ou produto?
           </h2>
