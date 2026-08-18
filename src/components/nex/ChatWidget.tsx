@@ -105,30 +105,51 @@ function answer(input: string): string {
 }
 
 function LinkifyText({ text }: { text: string }) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  const parts = text.split(urlRegex);
-  const matches = text.match(urlRegex) || [];
+  const tokenRegex = /(\[([^\]]+)\]\((https?:\/\/[^\)]+)\))|(https?:\/\/[^\s]+)/g;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
 
-  return (
-    <>
-      {parts.map((part, i) => {
-        if (urlRegex.test(part)) {
-          return (
-            <a
-              key={i}
-              href={part}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="break-all text-accent underline underline-offset-2 hover:no-underline"
-            >
-              {part}
-            </a>
-          );
-        }
-        return <span key={i}>{part}</span>;
-      })}
-    </>
-  );
+  while ((match = tokenRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(<span key={lastIndex}>{text.slice(lastIndex, match.index)}</span>);
+    }
+    if (match[1]) {
+      const label = match[2];
+      const url = match[3];
+      nodes.push(
+        <a
+          key={match.index}
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="text-accent underline underline-offset-2 hover:no-underline"
+        >
+          {label}
+        </a>,
+      );
+    } else {
+      const url = match[4];
+      nodes.push(
+        <a
+          key={match.index}
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="break-all text-accent underline underline-offset-2 hover:no-underline"
+        >
+          {url}
+        </a>,
+      );
+    }
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(<span key={lastIndex}>{text.slice(lastIndex)}</span>);
+  }
+
+  return <>{nodes}</>;
 }
 
 export function ChatWidget() {
