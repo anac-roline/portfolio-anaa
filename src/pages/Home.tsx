@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, BarChart3, Cpu, Database } from "lucide-react";
 import { ParticleField } from "@/components/nex/ParticleField";
+import heroImage from "@/assets/header-home.jpg";
 
 const pillars = [
   {
@@ -24,7 +25,15 @@ const pillars = [
 export default function Home() {
   return (
     <>
-      <section className="relative flex min-h-screen items-center overflow-hidden bg-surface-deep">
+      <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-surface-deep">
+        <img
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+          width={1920}
+          height={1088}
+          className="absolute inset-0 h-full w-full object-cover opacity-70"
+        />
         <ParticleField className="absolute inset-0 h-full w-full" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--surface-deep)_85%)]" />
 
