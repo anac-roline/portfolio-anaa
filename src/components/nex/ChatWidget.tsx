@@ -105,7 +105,7 @@ function answer(input: string): string {
 }
 
 function LinkifyText({ text }: { text: string }) {
-  const tokenRegex = /(\[([^\]]+)\]\((https?:\/\/[^\)]+)\))|(https?:\/\/[^\s]+)/g;
+  const tokenRegex = /(\[([^\]]+)\]\(([^\s\)]+)\))|(https?:\/\/[^\s]+)/g;
   const nodes: React.ReactNode[] = [];
   let lastIndex = 0;
   let match;
@@ -121,8 +121,8 @@ function LinkifyText({ text }: { text: string }) {
         <a
           key={match.index}
           href={url}
-          target="_blank"
-          rel="noreferrer noopener"
+          target={url.startsWith("http") ? "_blank" : undefined}
+          rel={url.startsWith("http") ? "noreferrer noopener" : undefined}
           className="text-accent underline underline-offset-2 hover:no-underline"
         >
           {label}
