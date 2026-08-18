@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Send, X } from "lucide-react";
+import chatbotIcon from "@/assets/chatbot-icon.png.asset.json";
 
 type Msg = { from: "bot" | "user"; text: string };
 
