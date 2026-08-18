@@ -134,9 +134,10 @@
   }
 
   ::selection {
-    background-color: oklch(0.74 0.15 165 / 0.3);
+    background-color: oklch(0.48 0.22 275 / 0.18);
     color: var(--color-foreground);
   }
+
 }
 
 @layer utilities {
