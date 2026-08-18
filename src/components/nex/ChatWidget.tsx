@@ -101,7 +101,7 @@ function answer(input: string): string {
     return "O tempo médio de resposta é de 24 horas úteis.";
   if (/(oi|olá|ola|bom dia|boa tarde|boa noite)/.test(q))
     return "Olá! Sou o assistente da NEX. Posso falar sobre serviços, IA, projetos e orçamentos.";
-  return `Posso ajudar com serviços, IA, projetos, prazos e orçamentos.\n\nPara um contato direto, use um dos canais abaixo:\n${contactLinks}`;
+  return `Posso ajudar com serviços, IA, projetos, prazos e orçamentos.\n\nPara um contato direto, use um dos canais abaixo:\n${contactLinks}\n\nWhatsApp: [${contacts.whatsapp.handle}](${contacts.whatsapp.href})`;
 }
 
 function LinkifyText({ text }: { text: string }) {
