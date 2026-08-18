@@ -18,8 +18,8 @@ export function PageHero({ image, eyebrow, title, text }: Props) {
         height={600}
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-background/75 backdrop-blur-[2px]" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/70" />
+      <div className="absolute inset-0 bg-background/55 backdrop-blur-[1px]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/25 to-background/55" />
 
       <motion.div
         initial={{ opacity: 0, y: 18 }}
