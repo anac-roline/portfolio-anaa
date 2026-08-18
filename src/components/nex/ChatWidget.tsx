@@ -79,8 +79,12 @@ export function ChatWidget() {
             transition={{ duration: 0.2 }}
             className="fixed bottom-20 right-4 z-[70] flex max-h-[70vh] w-[min(22rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-xl"
           >
-            <div className="border-b border-border px-4 py-3">
-              <p className="text-sm font-medium">Assistente NEX</p>
+            <div className="flex items-center gap-3 border-b border-border px-4 py-3">
+              <img
+                src={chatbotIcon.url}
+                alt="Assistente NEX"
+                className="h-8 w-8 object-contain dark:invert"
+              />
               <p className="text-xs text-muted-foreground">
                 Respostas rápidas sobre a organização
               </p>
