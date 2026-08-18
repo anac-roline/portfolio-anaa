@@ -1,16 +1,17 @@
 type Props = {
   className?: string;
   withWordmark?: boolean;
+  tone?: "default" | "inverse";
 };
 
-export function NexLogo({ className, withWordmark = true }: Props) {
+export function NexLogo({ className, withWordmark = true, tone = "default" }: Props) {
   return (
     <span className="inline-flex items-center gap-2.5">
       <svg
         viewBox="0 0 48 48"
         fill="none"
         aria-hidden="true"
-        className={className ?? "h-8 w-8 text-accent"}
+        className={className ?? `h-8 w-8 ${tone === "inverse" ? "text-accent-soft" : "text-accent"}`}
       >
         {/* gear ring */}
         <g stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
@@ -40,7 +41,7 @@ export function NexLogo({ className, withWordmark = true }: Props) {
         </g>
       </svg>
       {withWordmark && (
-        <span className="text-lg font-semibold tracking-[0.28em] text-foreground">
+        <span className={`text-lg font-semibold tracking-[0.28em] ${tone === "inverse" ? "text-inverse" : "text-foreground"}`}>
           NEX
         </span>
       )}

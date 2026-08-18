@@ -27,6 +27,8 @@ export function Layout() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const overHero = pathname === "/" && !scrolled;
+
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <header
@@ -34,11 +36,11 @@ export function Layout() {
           scrolled
             ? "border-b border-border bg-background/85 backdrop-blur-xl"
             : "border-b border-transparent"
-        }`}
+        } ${overHero ? "text-inverse" : ""}`}
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <Link to="/" aria-label="NEX — início">
-            <NexLogo />
+            <NexLogo tone={overHero ? "inverse" : "default"} />
           </Link>
 
           <ul className="hidden items-center gap-8 md:flex">
@@ -50,8 +52,12 @@ export function Layout() {
                   className={({ isActive }) =>
                     `text-xs tracking-[0.18em] transition-colors ${
                       isActive
-                        ? "text-accent"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? overHero
+                          ? "text-accent-soft"
+                          : "text-accent"
+                        : overHero
+                          ? "text-inverse-muted hover:text-inverse"
+                          : "text-muted-foreground hover:text-foreground"
                     }`
                   }
                 >
