@@ -59,7 +59,7 @@ export default function Contact() {
           <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">
             A NEX está aberta a projetos de desenvolvimento, inteligência de
             dados e colaborações open-source. Escolha o canal de sua preferência
-            — respondemos em até 24h.
+            - respondemos em até 24h.
           </p>
 
           <dl className="mt-12 grid gap-px border-t border-border sm:grid-cols-2">

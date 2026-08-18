@@ -25,7 +25,7 @@ const journey = [
     icon: Sparkles,
     title: "Projetos & Hackathons",
     period: "Contínuo",
-    text: "IoT — Arduino a APIs Node, incluindo hackathons. Estamos todo ano na Campus Party.",
+    text: "IoT - Arduino a APIs Node, incluindo hackathons. Estamos todo ano na Campus Party.",
   },
 ];
 
@@ -84,7 +84,7 @@ export default function About() {
               </p>
               <p>
                 A operação é conduzida em Brasília, com poucos projetos por vez e
-                acompanhamento direto — cada entrega passa pelas minhas mãos.
+                acompanhamento direto - cada entrega passa pelas minhas mãos.
               </p>
             </div>
 

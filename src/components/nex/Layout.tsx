@@ -39,7 +39,7 @@ export function Layout() {
         } ${overHero ? "text-inverse" : ""}`}
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <Link to="/" aria-label="NEX — início">
+          <Link to="/" aria-label="NEX - início">
             <NexLogo tone={overHero ? "inverse" : "default"} />
           </Link>
 
@@ -130,7 +130,7 @@ export function Layout() {
         </div>
         <div className="border-t border-border">
           <p className="mx-auto max-w-6xl px-6 py-5 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} NEX — Ana Nascimento.
+            © {new Date().getFullYear()} NEX - Ana Nascimento.
           </p>
         </div>
       </footer>

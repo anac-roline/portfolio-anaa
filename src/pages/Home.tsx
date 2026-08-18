@@ -45,7 +45,7 @@ export default function Home() {
           </h1>
           <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-inverse-muted">
             Somos uma organização de tecnologia dedicada a inteligência de dados,
-            software sob medida e automação — do dado bruto à interface final.
+            software sob medida e automação - do dado bruto à interface final.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Link
