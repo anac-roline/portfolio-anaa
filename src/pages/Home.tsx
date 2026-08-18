@@ -120,7 +120,7 @@ export default function Home() {
       <ParallaxSection
         image={ctaImage.url}
         className="border-y border-border"
-        overlayClassName="bg-gradient-to-t from-surface-deep/85 via-surface-deep/45 to-surface-deep/65"
+        overlayClassName="bg-surface-deep/50"
       >
         <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <h2 className="text-3xl font-light tracking-tight text-inverse sm:text-4xl">
