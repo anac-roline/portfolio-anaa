@@ -83,9 +83,10 @@ export default function About() {
               </p>
               <p>
                 O trabalho envolve modelagem de dados, T-SQL e Power BI no dia a
-                dia, além de interfaces e APIs com React e Node. Essa dupla formação
-                permite que a NEX entregue desde um dashboard executivo até uma
-                aplicação completa, sem intermediários.
+                dia, além de interfaces e APIs com React e Node. A NEX também
+                aplica inteligência artificial em processos e análises, unindo
+                machine learning, automação e visualização para entregar respostas
+                de verdade.
               </p>
               <p>
                 A operação é conduzida em Brasília, com poucos projetos por vez e

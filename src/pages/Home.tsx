@@ -17,8 +17,8 @@ const pillars = [
   },
   {
     icon: Database,
-    title: "Dados e Automação",
-    text: "Pipelines, integrações e automações em Python para eliminar trabalho manual.",
+    title: "IA e Automação",
+    text: "Automação inteligente, pipelines de dados e aplicação de modelos de IA para acelerar decisões.",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function Home() {
           </h1>
           <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-inverse-muted">
             Somos uma organização de tecnologia dedicada a inteligência de dados,
-            software sob medida e automação - do dado bruto à interface final.
+            inteligência artificial aplicada e software sob medida.
           </p>
         </motion.div>
       </section>
