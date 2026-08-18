@@ -87,24 +87,24 @@ export function Layout() {
 
         {open && (
           <div
-            className={`border-t md:hidden ${
+            className={`fixed inset-0 top-0 z-40 flex flex-col items-end justify-start pt-20 md:hidden ${
               scrolled
-                ? "border-border bg-background/95 backdrop-blur-xl"
-                : "border-transparent bg-transparent"
+                ? "bg-background/95 backdrop-blur-xl"
+                : "bg-transparent"
             }`}
           >
-            <ul className="flex flex-col items-end p-4">
+            <ul className="flex flex-col items-end p-6">
               {links.map((l) => (
                 <li key={l.to}>
                   <NavLink
                     to={l.to}
                     end={l.to === "/"}
-                    className={`block px-3 py-3 text-xs tracking-[0.18em] ${
+                    className={`block px-3 py-4 text-sm tracking-[0.18em] ${
                       scrolled
                         ? "text-muted-foreground"
                         : overHero
-                          ? "text-inverse/80 hover:text-inverse"
-                          : "text-foreground/80 hover:text-foreground"
+                          ? "text-inverse/90 hover:text-inverse"
+                          : "text-foreground/90 hover:text-foreground"
                     }`}
                   >
                     {l.label}
