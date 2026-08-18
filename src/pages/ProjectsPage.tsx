@@ -2,24 +2,28 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, Github, X } from "lucide-react";
 import { projects, type Project } from "@/data/projects";
+import { PageHero } from "@/components/nex/PageHero";
+import headerProjects from "@/assets/header-projects.jpg";
 
 export default function ProjectsPage() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section className="mx-auto max-w-6xl px-4 pt-28 pb-20 sm:px-6 sm:pt-44 sm:pb-24">
-      <div className="flex flex-wrap items-end justify-between gap-6">
-        <div className="max-w-2xl">
-          <p className="text-[11px] tracking-[0.32em] text-accent">PROJETOS</p>
-          <h1 className="mt-5 text-3xl font-light leading-tight tracking-tight sm:text-5xl">
+    <>
+      <PageHero
+        image={headerProjects}
+        eyebrow="PROJETOS"
+        title={
+          <>
             Trabalhos e
             <span className="block font-semibold">experimentos da NEX.</span>
-          </h1>
-          <p className="mt-5 text-muted-foreground">
-            Clique em um projeto para ver detalhes, destaques técnicos e a
-            imagem completa.
-          </p>
-        </div>
+          </>
+        }
+        text="Clique em um projeto para ver detalhes, destaques técnicos e a imagem completa."
+      />
+
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      <div className="flex justify-end">
         <a
           href="https://github.com/anac-roline"
           target="_blank"
@@ -31,7 +35,7 @@ export default function ProjectsPage() {
         </a>
       </div>
 
-      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
           <motion.article
             key={p.title}
@@ -182,6 +186,7 @@ export default function ProjectsPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+      </section>
+    </>
   );
 }
