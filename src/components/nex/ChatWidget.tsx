@@ -46,7 +46,40 @@ const quick = [
   "Vocês trabalham com IA?",
   "Quais projetos vocês têm?",
   "Como faço um orçamento?",
+  "Como entro em contato?",
 ];
+
+const contacts = {
+  whatsapp: {
+    label: "WhatsApp",
+    handle: "(61) 99337-8679",
+    href: "https://wa.me/5561993378679?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20NEX!",
+  },
+  email: {
+    label: "E-mail",
+    handle: "lealanacaroline00@gmail.com",
+    href: "mailto:lealanacaroline00@gmail.com",
+  },
+  linkedin: {
+    label: "LinkedIn",
+    handle: "in/ana-c-l-nascimento-171680111",
+    href: "https://www.linkedin.com/in/ana-c-l-nascimento-171680111",
+  },
+  instagram: {
+    label: "Instagram",
+    handle: "@anac_roline",
+    href: "https://instagram.com/anac_roline",
+  },
+  github: {
+    label: "GitHub",
+    handle: "@anac-roline",
+    href: "https://github.com/anac-roline",
+  },
+};
+
+const contactLinks = Object.values(contacts)
+  .map((c) => `- ${c.label}: [${c.handle}](${c.href})`)
+  .join("\n");
 
 function answer(input: string): string {
   const q = input.toLowerCase();
@@ -57,7 +90,9 @@ function answer(input: string): string {
   if (/(projeto|portf|trabalho|case)/.test(q))
     return "Você encontra os cases na página PROJETOS, com detalhes técnicos de cada entrega.";
   if (/(orçamento|orcamento|preç|prec|contrat|proposta|valor)/.test(q))
-    return "Conte o contexto pela página CONTATO (WhatsApp ou e-mail) e retornamos com uma proposta objetiva em até 24h.";
+    return `Para orçamentos, o melhor canal é o WhatsApp: [${contacts.whatsapp.handle}](${contacts.whatsapp.href})\n\nEnvie o contexto do projeto e retornamos uma proposta objetiva em até 24h.\n\nOutros canais:\n${contactLinks}`;
+  if (/(contato|telefone|whatsapp|email|e-mail|instagram|linkedin|github|redes?|falar|fale|ligar|mensagem)/.test(q))
+    return `Aqui estão os canais de contato:\n${contactLinks}\n\nO WhatsApp é o mais rápido: [${contacts.whatsapp.handle}](${contacts.whatsapp.href})`;
   if (/(onde|local|cidade|brasília|brasilia|endere)/.test(q))
     return "A operação é conduzida em Brasília, DF, com atendimento remoto para todo o Brasil.";
   if (/(quem|presidente|ana|fundad)/.test(q))
@@ -66,7 +101,55 @@ function answer(input: string): string {
     return "O tempo médio de resposta é de 24 horas úteis.";
   if (/(oi|olá|ola|bom dia|boa tarde|boa noite)/.test(q))
     return "Olá! Sou o assistente da NEX. Posso falar sobre serviços, IA, projetos e orçamentos.";
-  return "Posso ajudar com serviços, IA, projetos, prazos e orçamentos. Para um contato direto, use a página CONTATO.";
+  return `Posso ajudar com serviços, IA, projetos, prazos e orçamentos.\n\nPara um contato direto, use um dos canais abaixo:\n${contactLinks}\n\nWhatsApp: [${contacts.whatsapp.handle}](${contacts.whatsapp.href})`;
+}
+
+function LinkifyText({ text }: { text: string }) {
+  const tokenRegex = /(\[([^\]]+)\]\(([^\s\)]+)\))|(https?:\/\/[^\s]+)/g;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = tokenRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(<span key={lastIndex}>{text.slice(lastIndex, match.index)}</span>);
+    }
+    if (match[1]) {
+      const label = match[2];
+      const url = match[3];
+      nodes.push(
+        <a
+          key={match.index}
+          href={url}
+          target={url.startsWith("http") ? "_blank" : undefined}
+          rel={url.startsWith("http") ? "noreferrer noopener" : undefined}
+          className="text-accent underline underline-offset-2 hover:no-underline"
+        >
+          {label}
+        </a>,
+      );
+    } else {
+      const url = match[4];
+      nodes.push(
+        <a
+          key={match.index}
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="break-all text-accent underline underline-offset-2 hover:no-underline"
+        >
+          {url}
+        </a>,
+      );
+    }
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(<span key={lastIndex}>{text.slice(lastIndex)}</span>);
+  }
+
+  return <>{nodes}</>;
 }
 
 export function ChatWidget() {
@@ -128,13 +211,13 @@ export function ChatWidget() {
               {msgs.map((m, i) => (
                 <div
                   key={i}
-                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
+                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap ${
                     m.from === "bot"
                       ? "bg-surface text-foreground"
                       : "ml-auto bg-accent text-accent-foreground"
                   }`}
                 >
-                  {m.text}
+                  <LinkifyText text={m.text} />
                 </div>
               ))}
               <div ref={endRef} />
