@@ -6,15 +6,17 @@ type Msg = { from: "bot" | "user"; text: string };
 
 const quick = [
   "O que a NEX faz?",
+  "Vocês trabalham com IA?",
   "Quais projetos vocês têm?",
   "Como faço um orçamento?",
-  "Onde vocês ficam?",
 ];
 
 function answer(input: string): string {
   const q = input.toLowerCase();
+  if (/(ia|inteligência artificial|inteligencia artificial|machine learning|ml|modelo|automação inteligente)/.test(q))
+    return "Sim. A NEX aplica inteligência artificial e machine learning para automatizar análises, extrair padrões de dados e acelerar decisões de negócio.";
   if (/(faz|serviç|servic|atua|bi|dados|dev)/.test(q))
-    return "A NEX atua em três frentes: Business Intelligence (modelagem, T-SQL, Power BI), desenvolvimento web (React e Node) e automação de dados em Python.";
+    return "A NEX atua em três frentes: Business Intelligence (modelagem, T-SQL, Power BI), desenvolvimento web (React e Node) e IA/automação de dados em Python.";
   if (/(projeto|portf|trabalho|case)/.test(q))
     return "Você encontra os cases na página PROJETOS, com detalhes técnicos de cada entrega.";
   if (/(orçamento|orcamento|preç|prec|contrat|proposta|valor)/.test(q))
@@ -26,8 +28,8 @@ function answer(input: string): string {
   if (/(prazo|tempo|resposta)/.test(q))
     return "O tempo médio de resposta é de 24 horas úteis.";
   if (/(oi|olá|ola|bom dia|boa tarde|boa noite)/.test(q))
-    return "Olá! Sou o assistente da NEX. Posso falar sobre serviços, projetos e orçamentos.";
-  return "Posso ajudar com serviços, projetos, prazos e orçamentos. Para um contato direto, use a página CONTATO.";
+    return "Olá! Sou o assistente da NEX. Posso falar sobre serviços, IA, projetos e orçamentos.";
+  return "Posso ajudar com serviços, IA, projetos, prazos e orçamentos. Para um contato direto, use a página CONTATO.";
 }
 
 export function ChatWidget() {
