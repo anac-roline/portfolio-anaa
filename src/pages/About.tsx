@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, Sparkles } from "lucide-react";
 import profile from "@/assets/ana-profile.png";
+import { PageHero } from "@/components/nex/PageHero";
+import headerAbout from "@/assets/header-about.jpg";
 
 const values = [
   ["Clareza", "Dado sem interpretação é ruído. Entregamos leitura, não relatório."],
@@ -23,7 +25,7 @@ const journey = [
   },
   {
     icon: Sparkles,
-    title: "Projetos & Hackathons",
+    title: "Projetos e Hackathons",
     period: "Contínuo",
     text: "IoT - Arduino a APIs Node, incluindo hackathons. Estamos todo ano na Campus Party.",
   },
@@ -32,10 +34,19 @@ const journey = [
 export default function About() {
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 pb-16 sm:px-6 sm:pt-44 sm:pb-20">
-        <p className="text-[11px] tracking-[0.32em] text-accent">SOBRE</p>
+      <PageHero
+        image={headerAbout}
+        eyebrow="SOBRE"
+        title={
+          <>
+            À frente da NEX,
+            <span className="block font-semibold">unindo dados e software.</span>
+          </>
+        }
+      />
 
-        <div className="mt-10 grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+        <div className="grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,7 +64,7 @@ export default function About() {
             <div className="mt-4 flex items-baseline justify-between border-t border-border pt-4">
               <p className="text-sm font-medium">Ana Nascimento</p>
               <p className="text-xs tracking-[0.18em] text-muted-foreground">
-                PRESIDENTE & FUNDADORA
+                PRESIDENTE E FUNDADORA
               </p>
             </div>
           </motion.div>
@@ -63,13 +74,7 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h1 className="text-3xl font-light leading-tight tracking-tight sm:text-5xl">
-              À frente da NEX,
-              <span className="block font-semibold">
-                unindo dados e software.
-              </span>
-            </h1>
-            <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground">
+            <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
                 Ana Nascimento é presidente e fundadora da NEX. Estudante de
                 Ciência da Computação e analista de BI, ela criou a organização

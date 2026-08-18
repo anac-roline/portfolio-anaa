@@ -16,7 +16,7 @@ const pillars = [
   },
   {
     icon: Database,
-    title: "Dados & Automação",
+    title: "Dados e Automação",
     text: "Pipelines, integrações e automações em Python para eliminar trabalho manual.",
   },
 ];
@@ -35,7 +35,7 @@ export default function Home() {
           className="relative mx-auto w-full max-w-4xl px-5 text-center"
         >
           <p className="text-[11px] tracking-[0.4em] text-accent-soft">
-            NEX · TECNOLOGIA & DADOS
+            NEX · TECNOLOGIA E DADOS
           </p>
           <h1 className="mt-6 text-4xl font-light leading-[1.1] tracking-tight text-inverse sm:text-6xl lg:text-7xl">
             Transformando dados
@@ -47,21 +47,6 @@ export default function Home() {
             Somos uma organização de tecnologia dedicada a inteligência de dados,
             software sob medida e automação - do dado bruto à interface final.
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              to="/projetos"
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90"
-            >
-              VER PROJETOS
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="/sobre"
-              className="inline-flex items-center gap-2 rounded-full border border-inverse-muted/30 px-6 py-3 text-xs tracking-[0.18em] text-inverse transition-colors hover:border-accent-soft hover:text-accent-soft"
-            >
-              SOBRE A NEX
-            </Link>
-          </div>
         </motion.div>
       </section>
 
