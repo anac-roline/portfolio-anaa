@@ -78,7 +78,7 @@ const contacts = {
 };
 
 const contactLinks = Object.values(contacts)
-  .map((c) => `${c.label}: ${c.href}`)
+  .map((c) => `- ${c.label}: [${c.handle}](${c.href})`)
   .join("\n");
 
 function answer(input: string): string {
