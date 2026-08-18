@@ -25,14 +25,14 @@ const journey = [
     icon: Sparkles,
     title: "Projetos & Hackathons",
     period: "Contínuo",
-    text: "IoT — Arduino a APIs Node, incluindo hackathons. Estamos todo ano na Campus Party.",
+    text: "IoT - Arduino a APIs Node, incluindo hackathons. Estamos todo ano na Campus Party.",
   },
 ];
 
 export default function About() {
   return (
     <>
-      <section className="mx-auto max-w-6xl px-6 pt-36 pb-20 sm:pt-44">
+      <section className="mx-auto max-w-6xl px-4 pt-28 pb-16 sm:px-6 sm:pt-44 sm:pb-20">
         <p className="text-[11px] tracking-[0.32em] text-accent">SOBRE</p>
 
         <div className="mt-10 grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr]">
@@ -40,7 +40,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative mx-auto w-full max-w-[15rem] sm:max-w-xs lg:max-w-none"
           >
             <div className="overflow-hidden rounded-3xl border border-border bg-surface">
               <img
@@ -71,20 +71,20 @@ export default function About() {
             </h1>
             <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
-                Sou Ana Nascimento, presidente e fundadora da NEX. Estudante de
-                Ciência da Computação e analista de BI, criei a organização para
-                aproximar duas coisas que costumam andar separadas: a
+                Ana Nascimento é presidente e fundadora da NEX. Estudante de
+                Ciência da Computação e analista de BI, ela criou a organização
+                para aproximar duas coisas que costumam andar separadas: a
                 inteligência dos dados e a experiência de um produto bem feito.
               </p>
               <p>
-                Trabalho com modelagem de dados, T-SQL e Power BI no dia a dia, e
-                construo interfaces e APIs com React e Node. Essa dupla formação
+                O trabalho envolve modelagem de dados, T-SQL e Power BI no dia a
+                dia, além de interfaces e APIs com React e Node. Essa dupla formação
                 permite que a NEX entregue desde um dashboard executivo até uma
                 aplicação completa, sem intermediários.
               </p>
               <p>
                 A operação é conduzida em Brasília, com poucos projetos por vez e
-                acompanhamento direto — cada entrega passa pelas minhas mãos.
+                acompanhamento direto.
               </p>
             </div>
 
@@ -103,7 +103,7 @@ export default function About() {
       </section>
 
       <section className="border-t border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <p className="text-[11px] tracking-[0.32em] text-accent">TRAJETÓRIA</p>
           <ul className="mt-10 space-y-px">
             {journey.map((j, i) => {

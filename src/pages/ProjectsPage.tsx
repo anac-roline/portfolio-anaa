@@ -7,7 +7,7 @@ export default function ProjectsPage() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-36 pb-24 sm:pt-44">
+    <section className="mx-auto max-w-6xl px-4 pt-28 pb-20 sm:px-6 sm:pt-44 sm:pb-24">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="max-w-2xl">
           <p className="text-[11px] tracking-[0.32em] text-accent">PROJETOS</p>
@@ -31,7 +31,7 @@ export default function ProjectsPage() {
         </a>
       </div>
 
-      <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
           <motion.article
             key={p.title}
