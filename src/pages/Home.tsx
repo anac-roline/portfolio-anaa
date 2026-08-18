@@ -118,7 +118,7 @@ export default function Home() {
       </section>
 
       <ParallaxSection
-        image={ctaImage.url}
+        image={ctaImage}
         className="border-y border-border"
         overlayClassName="bg-surface-deep/50"
       >
