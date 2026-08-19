@@ -1,5 +1,5 @@
-import icon from "@/assets/nex-icon-hd.png.asset.json";
-import word from "@/assets/nex-word-hd.png.asset.json";
+import icon from "@/assets/nex-icon-v3.png.asset.json";
+import word from "@/assets/nex-word-v3.png.asset.json";
 
 type Props = {
   className?: string;
@@ -24,8 +24,8 @@ export function NexLogo({
       <img
         src={icon.url}
         alt="NEX"
-        width={768}
-        height={765}
+        width={766}
+        height={768}
         className={className ?? (vertical ? "h-14 w-14" : "h-9 w-9")}
       />
       {withWordmark && (
@@ -34,7 +34,7 @@ export function NexLogo({
           alt=""
           aria-hidden="true"
           width={1024}
-          height={327}
+          height={324}
           className={vertical ? "h-6 w-auto" : "h-5 w-auto"}
         />
       )}
