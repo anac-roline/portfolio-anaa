@@ -122,8 +122,8 @@ export function Layout() {
 
       <footer className="border-t border-border bg-surface">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:px-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <NexLogo />
+          <div className="flex flex-col items-start">
+            <NexLogo orientation="vertical" className="h-16 w-16" />
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               Tecnologia, dados e software sob medida. Brasília · DF · Brasil.
             </p>
