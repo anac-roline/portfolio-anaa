@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { NexLogo } from "./Logo";
-import { ChatWidget } from "./ChatWidget";
 
 const links = [
   { to: "/", label: "INÍCIO" },
@@ -39,12 +38,12 @@ export function Layout() {
             : "border-b border-transparent"
         } ${overHero ? "text-inverse" : ""}`}
       >
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
-          <Link to="/" aria-label="NEX - início">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <Link to="/" aria-label="NEX — início">
             <NexLogo tone={overHero ? "inverse" : "default"} />
           </Link>
 
-          <ul className="ml-auto hidden items-center justify-end gap-8 md:flex">
+          <ul className="hidden items-center gap-8 md:flex">
             {links.map((l) => (
               <li key={l.to}>
                 <NavLink
@@ -70,7 +69,7 @@ export function Layout() {
 
           <Link
             to="/contato"
-            className="ml-8 hidden rounded-full bg-accent px-5 py-2.5 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90 md:inline-flex"
+            className="hidden rounded-full bg-accent px-5 py-2.5 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90 md:inline-flex"
           >
             FALE CONOSCO
           </Link>
@@ -86,26 +85,14 @@ export function Layout() {
         </nav>
 
         {open && (
-          <div
-            className={`fixed inset-0 top-0 z-40 flex flex-col items-end justify-start pt-20 md:hidden ${
-              scrolled
-                ? "bg-background/95 backdrop-blur-xl"
-                : "bg-transparent"
-            }`}
-          >
-            <ul className="flex flex-col items-end p-6">
+          <div className="border-t border-border bg-background md:hidden">
+            <ul className="flex flex-col p-4">
               {links.map((l) => (
                 <li key={l.to}>
                   <NavLink
                     to={l.to}
                     end={l.to === "/"}
-                    className={`block px-3 py-4 text-sm tracking-[0.18em] ${
-                      scrolled
-                        ? "text-muted-foreground"
-                        : overHero
-                          ? "text-inverse/90 hover:text-inverse"
-                          : "text-foreground/90 hover:text-foreground"
-                    }`}
+                    className="block px-3 py-3 text-xs tracking-[0.18em] text-muted-foreground"
                   >
                     {l.label}
                   </NavLink>
@@ -121,9 +108,9 @@ export function Layout() {
       </main>
 
       <footer className="border-t border-border bg-surface">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:px-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col items-start">
-            <NexLogo orientation="vertical" className="h-16 w-16" />
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <NexLogo />
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               Tecnologia, dados e software sob medida. Brasília · DF · Brasil.
             </p>
@@ -142,13 +129,11 @@ export function Layout() {
           </ul>
         </div>
         <div className="border-t border-border">
-          <p className="mx-auto max-w-6xl px-4 py-5 text-xs sm:px-6 text-muted-foreground">
-            © {new Date().getFullYear()} NEX - Ana Nascimento.
+          <p className="mx-auto max-w-6xl px-6 py-5 text-xs text-muted-foreground">
+            © {new Date().getFullYear()} NEX — Ana Nascimento.
           </p>
         </div>
       </footer>
-
-      <ChatWidget />
     </div>
   );
 }

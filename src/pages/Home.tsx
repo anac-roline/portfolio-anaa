@@ -2,9 +2,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, BarChart3, Cpu, Database } from "lucide-react";
 import { ParticleField } from "@/components/nex/ParticleField";
-import { ParallaxSection } from "@/components/nex/ParallaxSection";
-import heroImage from "@/assets/header-home.jpg";
-import ctaImage from "@/assets/cta-parallax.jpg";
 
 const pillars = [
   {
@@ -19,23 +16,15 @@ const pillars = [
   },
   {
     icon: Database,
-    title: "IA e Automação",
-    text: "Automação inteligente, pipelines de dados e aplicação de modelos de IA para acelerar decisões.",
+    title: "Dados & Automação",
+    text: "Pipelines, integrações e automações em Python para eliminar trabalho manual.",
   },
 ];
 
 export default function Home() {
   return (
     <>
-      <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-surface-deep">
-        <img
-          src={heroImage}
-          alt=""
-          aria-hidden="true"
-          width={1920}
-          height={1088}
-          className="absolute inset-0 h-full w-full object-cover opacity-70"
-        />
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-surface-deep">
         <ParticleField className="absolute inset-0 h-full w-full" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--surface-deep)_85%)]" />
 
@@ -43,10 +32,10 @@ export default function Home() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative mx-auto w-full max-w-4xl px-5 text-center"
+          className="relative mx-auto w-full max-w-4xl px-6 text-center"
         >
           <p className="text-[11px] tracking-[0.4em] text-accent-soft">
-            NEX · TECNOLOGIA E DADOS
+            NEX · TECNOLOGIA & DADOS
           </p>
           <h1 className="mt-6 text-4xl font-light leading-[1.1] tracking-tight text-inverse sm:text-6xl lg:text-7xl">
             Transformando dados
@@ -56,12 +45,27 @@ export default function Home() {
           </h1>
           <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-inverse-muted">
             Somos uma organização de tecnologia dedicada a inteligência de dados,
-            inteligência artificial aplicada e software sob medida.
+            software sob medida e automação — do dado bruto à interface final.
           </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/projetos"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90"
+            >
+              VER PROJETOS
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/sobre"
+              className="inline-flex items-center gap-2 rounded-full border border-inverse-muted/30 px-6 py-3 text-xs tracking-[0.18em] text-inverse transition-colors hover:border-accent-soft hover:text-accent-soft"
+            >
+              SOBRE A NEX
+            </Link>
+          </div>
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-32">
+      <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="text-[11px] tracking-[0.32em] text-accent">
@@ -100,7 +104,7 @@ export default function Home() {
       </section>
 
       <section className="border-y border-border bg-surface">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-14 sm:px-6 sm:py-16 sm:grid-cols-4">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-16 sm:grid-cols-4">
           {[
             ["06+", "Projetos entregues"],
             ["BI", "Foco em dados"],
@@ -117,27 +121,21 @@ export default function Home() {
         </div>
       </section>
 
-      <ParallaxSection
-        image={ctaImage}
-        className="border-y border-border"
-        overlayClassName="bg-surface-deep/50"
-      >
-        <div className="mx-auto flex min-h-[70svh] max-w-4xl flex-col items-center justify-center px-4 py-32 text-center sm:px-6 sm:py-40">
-          <h2 className="text-3xl font-light tracking-tight text-inverse sm:text-4xl">
-            Tem um desafio de dados ou produto?
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-inverse-muted">
-            Conte o contexto e retornamos com uma proposta objetiva.
-          </p>
-          <Link
-            to="/contato"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            FALE CONOSCO
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </ParallaxSection>
+      <section className="mx-auto max-w-4xl px-6 py-24 text-center sm:py-32">
+        <h2 className="text-3xl font-light tracking-tight sm:text-4xl">
+          Tem um desafio de dados ou produto?
+        </h2>
+        <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
+          Conte o contexto e retornamos com uma proposta objetiva.
+        </p>
+        <Link
+          to="/contato"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-xs tracking-[0.18em] text-accent-foreground transition-opacity hover:opacity-90"
+        >
+          FALE CONOSCO
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </section>
     </>
   );
 }

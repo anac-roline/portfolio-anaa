@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, Sparkles } from "lucide-react";
 import profile from "@/assets/ana-profile.png";
-import { PageHero } from "@/components/nex/PageHero";
-import headerAbout from "@/assets/header-about.jpg";
 
 const values = [
   ["Clareza", "Dado sem interpretação é ruído. Entregamos leitura, não relatório."],
@@ -25,33 +23,24 @@ const journey = [
   },
   {
     icon: Sparkles,
-    title: "Projetos e Hackathons",
+    title: "Projetos & Hackathons",
     period: "Contínuo",
-    text: "IoT - Arduino a APIs Node, incluindo hackathons. Estamos todo ano na Campus Party.",
+    text: "De IoT com Arduino a APIs Node, incluindo hackathons da Campus Party.",
   },
 ];
 
 export default function About() {
   return (
     <>
-      <PageHero
-        image={headerAbout}
-        eyebrow="SOBRE"
-        title={
-          <>
-            À frente da NEX,
-            <span className="block font-semibold">unindo dados e software.</span>
-          </>
-        }
-      />
+      <section className="mx-auto max-w-6xl px-6 pt-36 pb-20 sm:pt-44">
+        <p className="text-[11px] tracking-[0.32em] text-accent">SOBRE</p>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-        <div className="grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="mt-10 grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative mx-auto w-full max-w-[15rem] sm:max-w-xs lg:max-w-none"
+            className="relative"
           >
             <div className="overflow-hidden rounded-3xl border border-border bg-surface">
               <img
@@ -64,7 +53,7 @@ export default function About() {
             <div className="mt-4 flex items-baseline justify-between border-t border-border pt-4">
               <p className="text-sm font-medium">Ana Nascimento</p>
               <p className="text-xs tracking-[0.18em] text-muted-foreground">
-                PRESIDENTE E FUNDADORA
+                PRESIDENTE & FUNDADORA
               </p>
             </div>
           </motion.div>
@@ -74,23 +63,28 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
+            <h1 className="text-3xl font-light leading-tight tracking-tight sm:text-5xl">
+              À frente da NEX,
+              <span className="block font-semibold">
+                unindo dados e software.
+              </span>
+            </h1>
+            <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
-                Ana Nascimento é presidente e fundadora da NEX. Estudante de
-                Ciência da Computação e analista de BI, ela criou a organização
-                para aproximar duas coisas que costumam andar separadas: a
+                Sou Ana Nascimento, presidente e fundadora da NEX. Estudante de
+                Ciência da Computação e analista de BI, criei a organização para
+                aproximar duas coisas que costumam andar separadas: a
                 inteligência dos dados e a experiência de um produto bem feito.
               </p>
               <p>
-                O trabalho envolve modelagem de dados, T-SQL e Power BI no dia a
-                dia, além de interfaces e APIs com React e Node. A NEX também
-                aplica inteligência artificial em processos e análises, unindo
-                machine learning, automação e visualização para entregar respostas
-                de verdade.
+                Trabalho com modelagem de dados, T-SQL e Power BI no dia a dia, e
+                construo interfaces e APIs com React e Node. Essa dupla formação
+                permite que a NEX entregue desde um dashboard executivo até uma
+                aplicação completa, sem intermediários.
               </p>
               <p>
                 A operação é conduzida em Brasília, com poucos projetos por vez e
-                acompanhamento direto.
+                acompanhamento direto — cada entrega passa pelas minhas mãos.
               </p>
             </div>
 
@@ -109,7 +103,7 @@ export default function About() {
       </section>
 
       <section className="border-t border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
           <p className="text-[11px] tracking-[0.32em] text-accent">TRAJETÓRIA</p>
           <ul className="mt-10 space-y-px">
             {journey.map((j, i) => {
