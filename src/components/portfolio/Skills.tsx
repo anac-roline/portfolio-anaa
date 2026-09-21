@@ -1,107 +1,44 @@
 import { motion } from "framer-motion";
-import {
-  Database,
-  BarChart3,
-  Code2,
-  FileCode,
-  Atom,
-  Server,
-  Braces,
-  Layout,
-} from "lucide-react";
+import { BarChart3, Braces, Code2, Database, Layout, Server } from "lucide-react";
 
-const groups = [
-  {
-    title: "Data & BI",
-    description: "Modelagem, ETL e visualização de dados.",
-    items: [
-      { name: "SQL Server", icon: Database },
-      { name: "Power BI", icon: BarChart3 },
-      { name: "T-SQL", icon: FileCode },
-      { name: "Python", icon: Code2 },
-    ],
-  },
-  {
-    title: "Web Development",
-    description: "Interfaces e APIs modernas, do front ao back.",
-    items: [
-      { name: "React", icon: Atom },
-      { name: "Node.js", icon: Server },
-      { name: "JavaScript", icon: Braces },
-      { name: "HTML / CSS", icon: Layout },
-    ],
-  },
+const skills = [
+  { title: "Data & BI", detail: "SQL Server · Power BI · T-SQL · Python", icon: BarChart3 },
+  { title: "Frontend", detail: "React · JavaScript · HTML · CSS", icon: Layout },
+  { title: "Backend", detail: "Node.js · APIs REST · Integrações", icon: Server },
+  { title: "Código", detail: "Git · Python · Boas práticas", icon: Braces },
 ];
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
-        >
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">
-            // skills
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Stack que uso no dia a dia
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Ferramentas que combino para entregar valor — do dado bruto à interface
-            final.
-          </p>
-        </motion.div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {groups.map((group, gi) => (
-            <motion.div
-              key={group.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: gi * 0.1 }}
-              className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur"
-            >
-              <div className="flex items-baseline justify-between">
-                <h3 className="text-lg font-semibold text-foreground">
-                  {group.title}
-                </h3>
-                <span className="font-mono text-xs text-muted-foreground">
-                  0{gi + 1}
+    <section id="skills" className="bg-charcoal py-24 text-paper sm:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mb-16 flex items-end justify-between gap-8">
+          <div>
+            <p className="section-kicker text-accent">Competências</p>
+            <h2 className="section-title text-paper">SKILLS</h2>
+          </div>
+          <Code2 className="hidden h-10 w-10 text-accent sm:block" />
+        </div>
+        <div className="grid grid-cols-1 gap-px border border-paper/15 bg-paper/15 sm:grid-cols-2 lg:grid-cols-4">
+          {skills.map((skill, index) => {
+            const Icon = skill.icon;
+            return (
+              <motion.article
+                key={skill.title}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+                className="group bg-charcoal p-8 text-center sm:p-10"
+              >
+                <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-paper/25 text-paper/70 transition-colors group-hover:border-accent group-hover:text-accent">
+                  <Icon className="h-8 w-8" strokeWidth={1.25} />
                 </span>
-              </div>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {group.description}
-              </p>
-
-              <ul className="mt-6 grid grid-cols-2 gap-3">
-                {group.items.map((item, i) => {
-                  const Icon = item.icon;
-                  return (
-                    <motion.li
-                      key={item.name}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: 0.05 * i }}
-                      className="group flex items-center gap-3 rounded-xl border border-border/60 bg-surface-elevated/60 px-3 py-3 transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:bg-surface-elevated"
-                    >
-                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                        <Icon className="h-4 w-4" />
-                      </span>
-                      <span className="text-sm font-medium text-foreground">
-                        {item.name}
-                      </span>
-                    </motion.li>
-                  );
-                })}
-              </ul>
-            </motion.div>
-          ))}
+                <h3 className="mt-7 text-sm font-semibold uppercase">{skill.title}</h3>
+                <p className="mt-2 text-xs leading-5 text-paper/45">{skill.detail}</p>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>
