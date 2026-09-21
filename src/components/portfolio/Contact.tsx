@@ -1,106 +1,42 @@
-import { motion } from "framer-motion";
-import { Github, Instagram, Linkedin, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, MapPin, MessageCircle } from "lucide-react";
 
 const socials = [
-  {
-    label: "WhatsApp",
-    handle: "(61) 99337-8679",
-    href: "https://wa.me/5561993378679?text=Ol%C3%A1%20Ana%2C%20vim%20pelo%20seu%20portf%C3%B3lio!",
-    icon: MessageCircle,
-  },
-  {
-    label: "Instagram",
-    handle: "@anac_roline",
-    href: "https://instagram.com/anac_roline",
-    icon: Instagram,
-  },
-  {
-    label: "LinkedIn",
-    handle: "in/ana-c-l-nascimento-171680111",
-    href: "https://www.linkedin.com/in/ana-c-l-nascimento-171680111",
-    icon: Linkedin,
-  },
-  {
-    label: "GitHub",
-    handle: "@anac-roline",
-    href: "https://github.com/anac-roline",
-    icon: Github,
-  },
-  {
-    label: "E-mail",
-    handle: "lealanacaroline00@gmail.com",
-    href: "mailto:lealanacaroline00@gmail.com",
-    icon: Mail,
-  },
+  { label: "WhatsApp", href: "https://wa.me/5561993378679", icon: MessageCircle },
+  { label: "Instagram", href: "https://instagram.com/anac_roline", icon: Instagram },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ana-c-l-nascimento-171680111", icon: Linkedin },
+  { label: "GitHub", href: "https://github.com/anac-roline", icon: Github },
+  { label: "E-mail", href: "mailto:lealanacaroline00@gmail.com", icon: Mail },
 ];
 
 export function Contact() {
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-5xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl border border-border bg-surface p-8 sm:p-14"
-        >
-          <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-accent-glow/15 blur-3xl" />
-
-          <div className="relative grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-accent">
-                // contato
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                Vamos construir algo{" "}
-                <span className="text-gradient">juntos?</span>
-              </h2>
-              <p className="mt-4 max-w-md text-muted-foreground">
-                Aberta a oportunidades em desenvolvimento, BI ou colaborações em
-                projetos open-source. Respondo em até 24h.
-              </p>
-            </div>
-
-            <ul className="space-y-3">
-              {socials.map((s) => {
-                const Icon = s.icon;
-                return (
-                  <li key={s.label}>
-                    <a
-                      href={s.href}
-                      target={s.href.startsWith("http") ? "_blank" : undefined}
-                      rel="noreferrer noopener"
-                      className="group flex items-center justify-between gap-4 rounded-xl border border-border bg-surface-elevated/60 p-4 transition-all hover:-translate-y-0.5 hover:border-accent/40"
-                    >
-                      <span className="flex items-center gap-3">
-                        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <span>
-                          <span className="block text-sm font-semibold text-foreground">
-                            {s.label}
-                          </span>
-                          <span className="block font-mono text-xs text-muted-foreground">
-                            {s.handle}
-                          </span>
-                        </span>
-                      </span>
-                      <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+    <section id="contact" className="bg-charcoal py-24 text-paper sm:py-32">
+      <div className="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[1.15fr_.85fr]">
+        <div>
+          <p className="section-kicker text-accent">Vamos conversar</p>
+          <h2 className="section-title text-paper">CONTATO</h2>
+          <a className="mt-8 block max-w-full break-words font-heading text-3xl transition-colors hover:text-accent sm:text-5xl" href="mailto:lealanacaroline00@gmail.com">lealanacaroline00@gmail.com</a>
+          <div className="mt-10 flex flex-wrap gap-3">
+            {socials.map(({ label, href, icon: Icon }) => (
+              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer noopener" className="inline-flex items-center gap-2 border border-paper/20 px-4 py-3 text-xs font-semibold uppercase text-paper/70 transition-colors hover:border-accent hover:text-accent">
+                <Icon className="h-4 w-4" />{label}
+              </a>
+            ))}
           </div>
-        </motion.div>
+        </div>
 
-        <footer className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} Ana Nascimento. Construído com React + Tailwind.</p>
-          <p className="font-mono">Brasília · DF · Brasil</p>
-        </footer>
+        <div className="relative flex min-h-64 items-center justify-center overflow-hidden border border-paper/10 bg-work">
+          <div className="brazil-mark" aria-hidden="true">BR</div>
+          <div className="relative z-10 text-center">
+            <MapPin className="mx-auto h-8 w-8 text-accent" />
+            <p className="mt-3 text-[10px] font-semibold uppercase text-paper/40">Localização</p>
+            <p className="font-heading text-4xl">Brasil<span className="text-accent">.</span></p>
+          </div>
+        </div>
       </div>
+      <footer className="mx-auto mt-20 flex max-w-7xl flex-col gap-2 border-t border-paper/10 px-5 pt-7 text-xs text-paper/35 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <p>© {new Date().getFullYear()} Ana Nascimento</p><p>Desenvolvimento · Dados · BI</p>
+      </footer>
     </section>
   );
 }

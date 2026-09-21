@@ -142,8 +142,8 @@ export function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="projects" className="relative bg-work py-24 text-paper sm:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,29 +152,22 @@ export function Projects() {
           className="flex flex-wrap items-end justify-between gap-6"
         >
           <div className="max-w-2xl">
-            <p className="font-mono text-xs uppercase tracking-widest text-accent">
-              // projetos
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Coisas que construí
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Clique em um projeto para ver detalhes, destaques técnicos e a
-              imagem completa.
-            </p>
+            <p className="section-kicker text-accent">Projetos selecionados</p>
+            <h2 className="section-title text-paper">WORK</h2>
+            <p className="mt-4 max-w-xl text-paper/55">Aplicações, experiências e protótipos que unem tecnologia, dados e solução de problemas.</p>
           </div>
           <a
             href="https://github.com/anac-roline"
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-accent"
+            className="inline-flex items-center gap-2 text-sm text-paper/60 transition-colors hover:text-accent"
           >
             <Github className="h-4 w-4" />
             Todos no GitHub
           </a>
         </motion.div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
             <motion.article
               key={p.title}
@@ -182,44 +175,44 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:-translate-y-1 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/5"
+              className="group relative flex min-h-[390px] flex-col overflow-hidden bg-charcoal"
             >
               <button
                 type="button"
                 onClick={() => setSelected(p)}
                 aria-label={`Ver detalhes de ${p.title}`}
-                className="relative block aspect-[16/10] w-full overflow-hidden bg-[oklch(0.14_0.012_240)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="relative block aspect-[16/10] w-full overflow-hidden bg-paper focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <img
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
                   style={{ objectPosition: p.imagePosition ?? "center", transform: p.imageScale ? `scale(${p.imageScale})` : undefined }}
-                  className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.03] ${
+                  className={`h-full w-full grayscale-[35%] transition-all duration-700 group-hover:grayscale-0 ${
                     (p.imageFit ?? "contain") === "cover"
                       ? "object-cover"
                       : "object-contain p-2"
                   }`}
                 />
-                <span className="absolute left-3 top-3 rounded-full border border-border bg-background/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
+                <span className="absolute left-3 top-3 bg-charcoal/85 px-2.5 py-1 text-[10px] font-semibold uppercase text-paper backdrop-blur">
                   {p.category}
                 </span>
-                <span className="absolute inset-0 flex items-end justify-end bg-gradient-to-t from-background/80 via-transparent to-transparent p-3 opacity-0 transition-opacity group-hover:opacity-100">
-                  <span className="rounded-full bg-accent px-3 py-1 text-[11px] font-semibold text-accent-foreground">
+                <span className="absolute inset-0 flex items-end justify-end bg-work-overlay p-3 opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="bg-accent px-3 py-1 text-[11px] font-semibold text-accent-foreground">
                     Ver detalhes
                   </span>
                 </span>
               </button>
 
-              <div className="flex flex-1 flex-col p-5">
+              <div className="flex flex-1 flex-col p-6">
                 <button
                   type="button"
                   onClick={() => setSelected(p)}
-                  className="text-left text-lg font-semibold text-foreground transition-colors hover:text-accent focus:outline-none"
+                  className="text-left font-heading text-2xl text-paper transition-colors hover:text-accent focus:outline-none"
                 >
                   {p.title}
                 </button>
-                <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-paper/55">
                   {p.description}
                 </p>
 
@@ -227,18 +220,18 @@ export function Projects() {
                   {p.tags.map((t) => (
                     <li
                       key={t}
-                      className="rounded-md border border-border/60 bg-secondary/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+                      className="border border-paper/15 px-2 py-0.5 text-[10px] uppercase text-paper/55"
                     >
                       {t}
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-5 flex items-center gap-2 border-t border-border pt-4">
+                <div className="mt-5 flex items-center gap-2 border-t border-paper/10 pt-4">
                   <button
                     type="button"
                     onClick={() => setSelected(p)}
-                    className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-xs font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+                    className="inline-flex flex-1 items-center justify-center gap-1.5 border border-accent/60 px-3 py-2 text-xs font-medium uppercase text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
                   >
                     Detalhes
                   </button>
@@ -248,7 +241,7 @@ export function Projects() {
                       target="_blank"
                       rel="noreferrer noopener"
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-secondary/40 px-3 py-2 text-xs font-medium text-foreground transition-colors hover:bg-secondary"
+                      className="inline-flex items-center justify-center gap-1.5 border border-paper/20 px-3 py-2 text-xs font-medium text-paper transition-colors hover:border-accent hover:text-accent"
                       aria-label="Abrir repositório no GitHub"
                     >
                       <Github className="h-3.5 w-3.5" />

@@ -1,95 +1,37 @@
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Sparkles } from "lucide-react";
 
 const items = [
-  {
-    icon: Briefcase,
-    title: "Estagiária de BI",
-    org: "Mútua",
-    period: "Atual",
-    description:
-      "Atuo com modelagem de dados, T-SQL e desenvolvimento de dashboards no Power BI para apoiar decisões de negócio.",
-    accent: true,
-  },
-  {
-    icon: GraduationCap,
-    title: "Graduação em Ciência da Computação",
-    org: "Em andamento",
-    period: "Brasília · DF",
-    description:
-      "Aprofundamento em algoritmos, estruturas de dados, banco de dados, engenharia de software e IA.",
-  },
-  {
-    icon: Sparkles,
-    title: "Projetos pessoais & Hackathons",
-    org: "Open Source",
-    period: "Contínuo",
-    description:
-      "Desde lixeira IoT com Arduino até APIs Node e participação em hackathons da Campus Party.",
-  },
+  { marker: "AGORA", title: "Estagiária de BI", org: "Mútua", text: "Modelagem de dados, T-SQL e dashboards em Power BI para apoiar decisões de negócio." },
+  { marker: "CURSO", title: "Ciência da Computação", org: "Graduação em andamento", text: "Algoritmos, estruturas de dados, banco de dados, engenharia de software e inteligência artificial." },
+  { marker: "SEMPRE", title: "Projetos & Hackathons", org: "Aprendizado contínuo", text: "Soluções web, APIs, automação com Arduino e desafios colaborativos de tecnologia." },
 ];
 
 export function Timeline() {
   return (
-    <section id="timeline" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-4xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
-        >
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">
-            // trajetória
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Onde estou e como cheguei aqui
-          </h2>
-        </motion.div>
-
-        <ol className="relative mt-12 border-l border-border pl-6">
-          {items.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <motion.li
-                key={item.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="relative pb-10 last:pb-0"
-              >
-                <span
-                  className={`absolute -left-[34px] flex h-8 w-8 items-center justify-center rounded-full border ${
-                    item.accent
-                      ? "border-accent/50 bg-accent/15 text-accent"
-                      : "border-border bg-surface text-muted-foreground"
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                </span>
-
-                <div className="rounded-2xl border border-border bg-surface/60 p-5 backdrop-blur">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 className="text-base font-semibold text-foreground">
-                      {item.title}
-                    </h3>
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {item.period}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm font-medium text-accent">
-                    {item.org}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.li>
-            );
-          })}
-        </ol>
+    <section id="timeline" className="bg-paper py-24 text-ink sm:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <p className="section-kicker text-accent">Minha evolução</p>
+        <h2 className="section-title text-ink">Trajetória</h2>
+        <div className="relative mt-16 border-l border-ink/20 sm:ml-28">
+          {items.map((item, index) => (
+            <motion.article
+              key={item.title}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.45, delay: index * 0.1 }}
+              className="relative grid gap-3 border-b border-ink/10 py-10 pl-8 sm:grid-cols-[150px_1fr] sm:gap-8"
+            >
+              <span className="absolute -left-1.5 top-12 h-3 w-3 rounded-full bg-accent ring-4 ring-paper" />
+              <p className="text-[10px] font-semibold uppercase text-accent">{item.marker}</p>
+              <div>
+                <h3 className="font-heading text-3xl">{item.title}</h3>
+                <p className="mt-1 text-sm font-semibold text-ink/55">{item.org}</p>
+                <p className="mt-4 max-w-2xl leading-7 text-ink/65">{item.text}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </section>
   );
