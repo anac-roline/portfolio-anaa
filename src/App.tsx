@@ -1,22 +1,21 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Layout } from "@/components/nex/Layout";
-import Home from "@/pages/Home";
-import About from "@/pages/About";
-import ProjectsPage from "@/pages/ProjectsPage";
-import Contact from "@/pages/Contact";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { Hero } from "@/components/portfolio/Hero";
+import { Skills } from "@/components/portfolio/Skills";
+import { Projects } from "@/components/portfolio/Projects";
+import { Timeline } from "@/components/portfolio/Timeline";
+import { Contact } from "@/components/portfolio/Contact";
+import { WhatsAppFab } from "@/components/portfolio/WhatsAppFab";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/sobre" element={<About />} />
-          <Route path="/projetos" element={<ProjectsPage />} />
-          <Route path="/contato" element={<Contact />} />
-          <Route path="*" element={<Home />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <main className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <Hero />
+      <Skills />
+      <Projects />
+      <Timeline />
+      <Contact />
+      <WhatsAppFab />
+    </main>
   );
 }
