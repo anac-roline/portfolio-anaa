@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, Github, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import apiImg from "@/assets/project-api.jpg";
 import esteticaImg from "@/assets/project-estetica.jpg";
 
@@ -142,14 +143,14 @@ export function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative bg-work py-24 text-paper sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="projects" className="relative bg-work py-16 text-paper sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="flex flex-wrap items-end justify-between gap-6"
+          className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between"
         >
           <div className="max-w-2xl">
             <p className="section-kicker text-accent">Projetos selecionados</p>
@@ -167,7 +168,7 @@ export function Projects() {
           </a>
         </motion.div>
 
-        <div className="mt-12 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-2 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
             <motion.article
               key={p.title}
@@ -175,13 +176,14 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="group relative flex min-h-[390px] flex-col overflow-hidden bg-charcoal"
+              className="group relative flex min-h-[360px] flex-col overflow-hidden bg-charcoal sm:min-h-[390px]"
             >
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 onClick={() => setSelected(p)}
                 aria-label={`Ver detalhes de ${p.title}`}
-                className="relative block aspect-[16/10] w-full overflow-hidden bg-paper focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="relative block h-auto aspect-[16/10] w-full overflow-hidden rounded-none bg-paper p-0 focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <img
                   src={p.image}
@@ -202,16 +204,17 @@ export function Projects() {
                     Ver detalhes
                   </span>
                 </span>
-              </button>
+              </Button>
 
               <div className="flex flex-1 flex-col p-6">
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   onClick={() => setSelected(p)}
-                  className="text-left font-heading text-2xl text-paper transition-colors hover:text-accent focus:outline-none"
+                  className="h-auto justify-start whitespace-normal rounded-none p-0 text-left font-heading text-2xl text-paper transition-colors hover:bg-transparent hover:text-accent"
                 >
                   {p.title}
-                </button>
+                </Button>
                 <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-paper/55">
                   {p.description}
                 </p>
@@ -228,13 +231,14 @@ export function Projects() {
                 </ul>
 
                 <div className="mt-5 flex items-center gap-2 border-t border-paper/10 pt-4">
-                  <button
+                  <Button
                     type="button"
+                    variant="outline"
                     onClick={() => setSelected(p)}
-                    className="inline-flex flex-1 items-center justify-center gap-1.5 border border-accent/60 px-3 py-2 text-xs font-medium uppercase text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+                    className="h-10 flex-1 rounded-none border-accent/60 bg-transparent px-3 text-xs font-medium uppercase text-accent shadow-none hover:bg-accent hover:text-accent-foreground"
                   >
                     Detalhes
-                  </button>
+                  </Button>
                   {p.github && (
                     <a
                       href={p.github}
@@ -272,7 +276,7 @@ export function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-background/80 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-[60] flex items-end justify-center bg-background/80 p-0 backdrop-blur-md sm:items-center sm:p-4"
             onClick={() => setSelected(null)}
             role="dialog"
             aria-modal="true"
@@ -284,27 +288,29 @@ export function Projects() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
+              className="relative w-full max-w-3xl overflow-hidden rounded-t-lg border border-border bg-surface shadow-2xl sm:rounded-lg"
             >
-              <button
+              <Button
                 type="button"
+                variant="outline"
+                size="icon"
                 onClick={() => setSelected(null)}
-                className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-colors hover:bg-secondary"
+                className="absolute right-3 top-3 z-10 h-10 w-10 rounded-full border-border bg-background/80 text-foreground backdrop-blur hover:bg-secondary"
                 aria-label="Fechar"
               >
                 <X className="h-4 w-4" />
-              </button>
+              </Button>
 
-              <div className="max-h-[85vh] overflow-y-auto">
-                <div className="relative bg-[oklch(0.14_0.012_240)] p-4">
+              <div className="max-h-[92dvh] overflow-y-auto overscroll-contain sm:max-h-[85vh]">
+                <div className="relative bg-charcoal p-3 pt-14 sm:p-4">
                   <img
                     src={selected.image}
                     alt={selected.title}
-                    className="mx-auto max-h-[55vh] w-auto max-w-full object-contain"
+                    className="mx-auto max-h-[38dvh] w-auto max-w-full object-contain sm:max-h-[55vh]"
                   />
                 </div>
 
-                <div className="p-6 sm:p-8">
+                <div className="p-5 sm:p-8">
                   <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
                     {selected.category}
                   </p>
