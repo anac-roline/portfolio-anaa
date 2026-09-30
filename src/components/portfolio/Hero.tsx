@@ -23,7 +23,7 @@ export function Hero() {
   const allowParallax = !isMobile && !reduceMotion;
 
   return (
-    <section ref={sectionRef} id="home" className="relative overflow-hidden bg-paper pt-14 text-ink sm:pt-16">
+    <section ref={sectionRef} id="home" className="relative overflow-hidden bg-paper text-ink">
       <div
         className="hero-masthead"
         style={{ backgroundImage: `linear-gradient(90deg, color-mix(in oklab, var(--charcoal) 74%, transparent), color-mix(in oklab, var(--charcoal) 25%, transparent)), url(${brazilLandscape})` }}
