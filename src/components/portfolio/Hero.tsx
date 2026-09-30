@@ -28,9 +28,7 @@ export function Hero() {
         className="hero-masthead"
         style={{ backgroundImage: `linear-gradient(90deg, color-mix(in oklab, var(--charcoal) 74%, transparent), color-mix(in oklab, var(--charcoal) 25%, transparent)), url(${brazilLandscape})` }}
       >
-        <div className="mx-auto flex h-full max-w-6xl items-end px-4 pb-8 sm:px-8 sm:pb-10">
-          <p className="ml-auto max-w-md text-right font-heading text-xl italic text-paper/80 sm:text-2xl">Tecnologia orientada por dados, construída com intenção.</p>
-        </div>
+        <div className="mx-auto h-full max-w-6xl" />
       </div>
       <div className="mx-auto max-w-6xl px-4 sm:px-8">
         <div className="relative grid grid-cols-1 gap-8 pb-14 pt-24 sm:pb-20 sm:pt-28 lg:min-h-[410px] lg:grid-cols-[150px_220px_1fr] lg:items-center lg:gap-10 lg:py-16">
