@@ -6,3 +6,4 @@
 - [x] Verify desktop and mobile layouts, interactions, and build status.
 - [x] Add a Brazilian landscape behind the profile portrait.
 - [x] Recreate the compact contact footer from the supplied template.
+- [ ] Remove the sentence over the Brazilian landscape.
