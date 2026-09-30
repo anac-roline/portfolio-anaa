@@ -39,6 +39,17 @@ export function Hero() {
     if (holdTimer.current) clearTimeout(holdTimer.current);
   }, []);
 
+  useEffect(() => {
+    if (!portraitOpen) return;
+    const closePreview = () => stopPortraitPreview();
+    window.addEventListener("pointerup", closePreview);
+    window.addEventListener("pointercancel", closePreview);
+    return () => {
+      window.removeEventListener("pointerup", closePreview);
+      window.removeEventListener("pointercancel", closePreview);
+    };
+  }, [portraitOpen]);
+
   return (
     <section ref={sectionRef} id="home" className="relative overflow-hidden bg-paper text-ink">
       <div
@@ -71,7 +82,6 @@ export function Hero() {
                 onPointerDown={startPortraitPreview}
                 onPointerUp={stopPortraitPreview}
                 onPointerCancel={stopPortraitPreview}
-                onPointerLeave={stopPortraitPreview}
                 onContextMenu={(event) => event.preventDefault()}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") setPortraitOpen(true);
