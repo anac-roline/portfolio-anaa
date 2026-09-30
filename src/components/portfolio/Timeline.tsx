@@ -8,11 +8,13 @@ const items = [
 
 export function Timeline() {
   return (
-    <section id="timeline" className="bg-paper py-16 text-ink sm:py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-8">
-        <p className="section-kicker text-accent">Minha evolução</p>
-        <h2 className="section-title text-ink">Trajetória</h2>
-        <div className="relative mt-10 border-l border-ink/20 sm:ml-10 sm:mt-14 lg:ml-28 lg:mt-16">
+    <section id="timeline" className="timeline-paper py-16 text-ink sm:py-24">
+      <div className="mx-auto max-w-5xl px-4 sm:px-8">
+        <div className="text-center">
+          <p className="section-kicker text-accent">Minha evolução</p>
+          <h2 className="mt-2 font-sans text-2xl font-light uppercase sm:text-3xl">TRAJETÓRIA</h2>
+        </div>
+        <div className="relative mx-auto mt-12 max-w-4xl before:absolute before:bottom-0 before:left-3 before:top-0 before:w-px before:bg-ink/20 sm:before:left-1/2">
           {items.map((item, index) => (
             <motion.article
               key={item.title}
@@ -20,12 +22,12 @@ export function Timeline() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.45, delay: index * 0.1 }}
-              className="relative grid gap-3 border-b border-ink/10 py-8 pl-6 sm:grid-cols-[110px_1fr] sm:gap-6 sm:pl-8 lg:grid-cols-[150px_1fr] lg:gap-8"
+              className={`relative mb-8 ml-8 bg-paper p-6 shadow-editorial sm:ml-0 sm:w-[calc(50%-2rem)] ${index % 2 ? "sm:ml-auto" : "sm:mr-auto"}`}
             >
-              <span className="absolute -left-1.5 top-12 h-3 w-3 rounded-full bg-accent ring-4 ring-paper" />
+              <span className={`absolute top-8 h-3 w-3 rounded-full bg-accent ring-4 ring-paper ${index % 2 ? "-left-[2.45rem]" : "-left-[2.45rem] sm:-right-[2.45rem] sm:left-auto"}`} />
               <p className="text-[10px] font-semibold uppercase text-accent">{item.marker}</p>
               <div>
-                <h3 className="font-heading text-2xl sm:text-3xl">{item.title}</h3>
+                <h3 className="mt-1 font-heading text-2xl">{item.title}</h3>
                 <p className="mt-1 text-sm font-semibold text-ink/55">{item.org}</p>
                 <p className="mt-4 max-w-2xl leading-7 text-ink/65">{item.text}</p>
               </div>

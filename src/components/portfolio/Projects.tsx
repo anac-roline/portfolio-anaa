@@ -143,32 +143,32 @@ export function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative bg-work py-16 text-paper sm:py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+    <section id="projects" className="project-texture relative bg-work py-14 text-paper sm:py-20">
+      <div className="mx-auto max-w-5xl px-4 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between"
+          className="text-center"
         >
-          <div className="max-w-2xl">
+          <div className="mx-auto max-w-2xl">
             <p className="section-kicker text-accent">Projetos selecionados</p>
-            <h2 className="section-title text-paper">WORK</h2>
-            <p className="mt-4 max-w-xl text-paper/55">Aplicações, experiências e protótipos que unem tecnologia, dados e solução de problemas.</p>
+            <h2 className="mt-2 font-sans text-2xl font-light uppercase text-paper sm:text-3xl">WORK</h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-paper/55">Aplicações, experiências e protótipos que unem tecnologia, dados e solução de problemas.</p>
           </div>
           <a
             href="https://github.com/anac-roline"
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 text-sm text-paper/60 transition-colors hover:text-accent"
+            className="mt-5 inline-flex items-center gap-2 text-xs uppercase text-paper/60 transition-colors hover:text-accent"
           >
             <Github className="h-4 w-4" />
             Todos no GitHub
           </a>
         </motion.div>
 
-        <div className="mt-10 grid gap-2 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
           {projects.map((p, i) => (
             <motion.article
               key={p.title}
@@ -176,95 +176,31 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="group relative flex min-h-[360px] flex-col overflow-hidden bg-charcoal sm:min-h-[390px]"
+              className="group relative aspect-[4/3] overflow-hidden bg-charcoal"
             >
               <Button
                 type="button"
                 variant="ghost"
                 onClick={() => setSelected(p)}
                 aria-label={`Ver detalhes de ${p.title}`}
-                className="relative block h-auto aspect-[16/10] w-full overflow-hidden rounded-none bg-paper p-0 focus-visible:ring-2 focus-visible:ring-accent"
+                className="relative block h-full w-full overflow-hidden rounded-none bg-paper p-0 focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <img
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
                   style={{ objectPosition: p.imagePosition ?? "center", transform: p.imageScale ? `scale(${p.imageScale})` : undefined }}
-                  className={`h-full w-full grayscale-[35%] transition-all duration-700 group-hover:grayscale-0 ${
+                  className={`h-full w-full grayscale-[65%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 ${
                     (p.imageFit ?? "contain") === "cover"
                       ? "object-cover"
                       : "object-contain p-2"
                   }`}
                 />
-                <span className="absolute left-3 top-3 bg-charcoal/85 px-2.5 py-1 text-[10px] font-semibold uppercase text-paper backdrop-blur">
-                  {p.category}
-                </span>
-                <span className="absolute inset-0 flex items-end justify-end bg-work-overlay p-3 opacity-0 transition-opacity group-hover:opacity-100">
-                  <span className="bg-accent px-3 py-1 text-[11px] font-semibold text-accent-foreground">
-                    Ver detalhes
-                  </span>
+                <span className="absolute inset-0 flex flex-col justify-end bg-work-overlay p-3 text-left sm:p-4">
+                  <span className="text-[9px] font-semibold uppercase text-accent">{p.category}</span>
+                  <span className="mt-1 whitespace-normal font-heading text-lg leading-tight text-paper sm:text-xl">{p.title}</span>
                 </span>
               </Button>
-
-              <div className="flex flex-1 flex-col p-6">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={() => setSelected(p)}
-                  className="h-auto justify-start whitespace-normal rounded-none p-0 text-left font-heading text-2xl text-paper transition-colors hover:bg-transparent hover:text-accent"
-                >
-                  {p.title}
-                </Button>
-                <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-paper/55">
-                  {p.description}
-                </p>
-
-                <ul className="mt-4 flex flex-wrap gap-1.5">
-                  {p.tags.map((t) => (
-                    <li
-                      key={t}
-                      className="border border-paper/15 px-2 py-0.5 text-[10px] uppercase text-paper/55"
-                    >
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-5 flex items-center gap-2 border-t border-paper/10 pt-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => setSelected(p)}
-                    className="h-10 flex-1 rounded-none border-accent/60 bg-transparent px-3 text-xs font-medium uppercase text-accent shadow-none hover:bg-accent hover:text-accent-foreground"
-                  >
-                    Detalhes
-                  </Button>
-                  {p.github && (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center justify-center gap-1.5 border border-paper/20 px-3 py-2 text-xs font-medium text-paper transition-colors hover:border-accent hover:text-accent"
-                      aria-label="Abrir repositório no GitHub"
-                    >
-                      <Github className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                  {p.demo && (
-                    <a
-                      href={p.demo}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-xs font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
-                      aria-label="Abrir demo"
-                    >
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                </div>
-              </div>
             </motion.article>
           ))}
         </div>
