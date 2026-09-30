@@ -7,3 +7,4 @@
 - [x] Add a Brazilian landscape behind the profile portrait.
 - [x] Recreate the compact contact footer from the supplied template.
 - [x] Remove the sentence over the Brazilian landscape.
+- [ ] Replace the top navigation bar with a floating menu button over the landscape.
