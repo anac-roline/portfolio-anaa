@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowDownRight, Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
-import profileAsset from "@/assets/ana-profile-portrait.png.asset.json";
+import profile from "@/assets/ana-profile-portrait.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const nav = [
@@ -46,7 +46,7 @@ export function Hero() {
           <div className="absolute left-1/2 top-0 h-40 w-40 -translate-x-1/2 -translate-y-1/2 sm:h-48 sm:w-48 lg:static lg:h-56 lg:w-56 lg:translate-x-0 lg:translate-y-0">
             <motion.div style={{ y: allowParallax ? portraitY : 0 }} className="h-full w-full">
               <img
-                src={profileAsset.url}
+                src={profile}
                 alt="Ana Nascimento"
                 className="h-full w-full rounded-full border-[6px] border-paper object-cover shadow-editorial"
                 loading="eager"
