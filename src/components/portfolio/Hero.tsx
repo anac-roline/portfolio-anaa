@@ -1,6 +1,7 @@
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDownRight, Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import profile from "@/assets/ana-profile-portrait.png";
 import brazilLandscape from "@/assets/brazil-landscape.jpg";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -15,12 +16,28 @@ const nav = [
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [portraitOpen, setPortraitOpen] = useState(false);
   const isMobile = useIsMobile();
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const portraitY = useTransform(scrollYProgress, [0, 1], [0, -70]);
   const titleY = useTransform(scrollYProgress, [0, 1], [0, 40]);
   const allowParallax = !isMobile && !reduceMotion;
+
+  const startPortraitPreview = () => {
+    holdTimer.current = setTimeout(() => setPortraitOpen(true), 180);
+  };
+
+  const stopPortraitPreview = () => {
+    if (holdTimer.current) clearTimeout(holdTimer.current);
+    holdTimer.current = null;
+    setPortraitOpen(false);
+  };
+
+  useEffect(() => () => {
+    if (holdTimer.current) clearTimeout(holdTimer.current);
+  }, []);
 
   return (
     <section ref={sectionRef} id="home" className="relative overflow-hidden bg-paper text-ink">
@@ -47,12 +64,31 @@ export function Hero() {
 
           <div className="absolute left-1/2 top-0 h-36 w-36 -translate-x-1/2 -translate-y-1/2 sm:h-44 sm:w-44 lg:static lg:h-44 lg:w-44 lg:translate-x-0 lg:translate-y-0">
             <motion.div style={{ y: allowParallax ? portraitY : 0 }} className="h-full w-full">
-              <img
-                src={profile}
-                alt="Ana Nascimento"
-                className="h-full w-full rounded-full border-[6px] border-paper object-cover shadow-editorial"
-                loading="eager"
-              />
+              <Button
+                type="button"
+                variant="ghost"
+                className="h-full w-full touch-none select-none rounded-full p-0 shadow-editorial"
+                onPointerDown={startPortraitPreview}
+                onPointerUp={stopPortraitPreview}
+                onPointerCancel={stopPortraitPreview}
+                onPointerLeave={stopPortraitPreview}
+                onContextMenu={(event) => event.preventDefault()}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") setPortraitOpen(true);
+                }}
+                onKeyUp={(event) => {
+                  if (event.key === "Enter" || event.key === " ") setPortraitOpen(false);
+                }}
+                aria-label="Mantenha pressionado para ampliar a foto de Ana Nascimento"
+              >
+                <img
+                  src={profile}
+                  alt="Ana Nascimento"
+                  className="h-full w-full rounded-full border-[6px] border-paper object-cover"
+                  draggable={false}
+                  loading="eager"
+                />
+              </Button>
             </motion.div>
           </div>
 
@@ -78,6 +114,29 @@ export function Hero() {
           “Dados contam histórias. Código transforma essas histórias em experiências.”
         </p>
       </div>
+
+      <AnimatePresence>
+        {portraitOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-charcoal/85 p-8 backdrop-blur-sm"
+            aria-hidden="true"
+          >
+            <motion.img
+              initial={{ opacity: 0, scale: 0.82 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              src={profile}
+              alt=""
+              className="aspect-square w-full max-w-sm rounded-full border-[6px] border-paper object-cover shadow-editorial"
+              draggable={false}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
