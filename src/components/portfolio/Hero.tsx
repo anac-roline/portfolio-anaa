@@ -1,6 +1,7 @@
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDownRight, Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import profile from "@/assets/ana-profile-portrait.png";
 import brazilLandscape from "@/assets/brazil-landscape.jpg";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -15,12 +16,39 @@ const nav = [
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [portraitOpen, setPortraitOpen] = useState(false);
   const isMobile = useIsMobile();
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const portraitY = useTransform(scrollYProgress, [0, 1], [0, -70]);
   const titleY = useTransform(scrollYProgress, [0, 1], [0, 40]);
   const allowParallax = !isMobile && !reduceMotion;
+
+  const startPortraitPreview = () => {
+    holdTimer.current = setTimeout(() => setPortraitOpen(true), 180);
+  };
+
+  const stopPortraitPreview = () => {
+    if (holdTimer.current) clearTimeout(holdTimer.current);
+    holdTimer.current = null;
+    setPortraitOpen(false);
+  };
+
+  useEffect(() => () => {
+    if (holdTimer.current) clearTimeout(holdTimer.current);
+  }, []);
+
+  useEffect(() => {
+    if (!portraitOpen) return;
+    const closePreview = () => stopPortraitPreview();
+    window.addEventListener("pointerup", closePreview);
+    window.addEventListener("pointercancel", closePreview);
+    return () => {
+      window.removeEventListener("pointerup", closePreview);
+      window.removeEventListener("pointercancel", closePreview);
+    };
+  }, [portraitOpen]);
 
   return (
     <section ref={sectionRef} id="home" className="relative overflow-hidden bg-paper text-ink">
@@ -31,7 +59,7 @@ export function Hero() {
         <div className="mx-auto h-full max-w-6xl" />
       </div>
       <div className="mx-auto max-w-6xl px-4 sm:px-8">
-        <div className="relative grid grid-cols-1 gap-8 pb-14 pt-24 sm:pb-20 sm:pt-28 lg:min-h-[410px] lg:grid-cols-[150px_220px_1fr] lg:items-center lg:gap-10 lg:py-16">
+        <div className="relative grid grid-cols-1 gap-7 pb-10 pt-20 sm:pb-14 sm:pt-24 lg:min-h-[300px] lg:grid-cols-[120px_170px_1fr] lg:items-center lg:gap-8 lg:py-10">
           <aside className="hidden lg:block">
             <nav aria-label="Navegação da apresentação">
               <ul className="relative space-y-4 border-l border-ink/25 pl-5">
@@ -45,24 +73,42 @@ export function Hero() {
             </nav>
           </aside>
 
-          <div className="absolute left-1/2 top-0 h-40 w-40 -translate-x-1/2 -translate-y-1/2 sm:h-48 sm:w-48 lg:static lg:h-56 lg:w-56 lg:translate-x-0 lg:translate-y-0">
+          <div className="absolute left-1/2 top-0 h-36 w-36 -translate-x-1/2 -translate-y-1/2 sm:h-44 sm:w-44 lg:static lg:h-44 lg:w-44 lg:translate-x-0 lg:translate-y-0">
             <motion.div style={{ y: allowParallax ? portraitY : 0 }} className="h-full w-full">
-              <img
-                src={profile}
-                alt="Ana Nascimento"
-                className="h-full w-full rounded-full border-[6px] border-paper object-cover shadow-editorial"
-                loading="eager"
-              />
+              <Button
+                type="button"
+                variant="ghost"
+                className="h-full w-full touch-none select-none rounded-full p-0 shadow-editorial"
+                onPointerDown={startPortraitPreview}
+                onPointerUp={stopPortraitPreview}
+                onPointerCancel={stopPortraitPreview}
+                onContextMenu={(event) => event.preventDefault()}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") setPortraitOpen(true);
+                }}
+                onKeyUp={(event) => {
+                  if (event.key === "Enter" || event.key === " ") setPortraitOpen(false);
+                }}
+                aria-label="Mantenha pressionado para ampliar a foto de Ana Nascimento"
+              >
+                <img
+                  src={profile}
+                  alt="Ana Nascimento"
+                  className="h-full w-full rounded-full border-[6px] border-paper object-cover"
+                  draggable={false}
+                  loading="eager"
+                />
+              </Button>
             </motion.div>
           </div>
 
           <motion.div style={{ y: allowParallax ? titleY : 0 }} className="text-center lg:text-left">
             <p className="mb-2 text-[10px] font-semibold uppercase text-accent sm:text-xs">Desenvolvedora & Analista de BI</p>
-            <h1 className="font-heading text-5xl leading-none sm:text-6xl lg:text-7xl">Ana <em>Nascimento</em></h1>
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-ink/65 sm:text-base sm:leading-7 lg:mx-0">
+            <h1 className="font-heading text-5xl leading-none sm:text-6xl">Ana <em>Nascimento</em></h1>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-ink/65 lg:mx-0">
               Estudante de Ciência da Computação apaixonada por transformar dados em soluções — de dashboards e análises a interfaces web modernas.
             </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
               <a href="#projects" className="inline-flex min-h-11 w-full items-center justify-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-ink hover:text-paper min-[420px]:w-auto">Conheça meu trabalho <ArrowDownRight className="h-4 w-4" /></a>
               <a href="https://wa.me/5561993378679" target="_blank" rel="noreferrer noopener" className="social-icon" aria-label="WhatsApp"><MessageCircle /></a>
               <a href="https://instagram.com/anac_roline" target="_blank" rel="noreferrer noopener" className="social-icon" aria-label="Instagram"><Instagram /></a>
@@ -73,11 +119,34 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="bg-secondary py-7 text-ink sm:py-9">
-        <p className="mx-auto max-w-4xl px-5 text-center font-heading text-xl italic leading-snug text-ink/75 sm:px-6 sm:text-2xl">
+      <div className="bg-secondary py-5 text-ink sm:py-6">
+        <p className="mx-auto max-w-4xl px-5 text-center font-heading text-lg italic leading-snug text-ink/75 sm:px-6 sm:text-xl">
           “Dados contam histórias. Código transforma essas histórias em experiências.”
         </p>
       </div>
+
+      <AnimatePresence>
+        {portraitOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-charcoal/85 p-8 backdrop-blur-sm"
+            aria-hidden="true"
+          >
+            <motion.img
+              initial={{ opacity: 0, scale: 0.82 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              src={profile}
+              alt=""
+              className="aspect-square w-full max-w-sm rounded-full border-[6px] border-paper object-cover shadow-editorial"
+              draggable={false}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

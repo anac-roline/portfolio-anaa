@@ -1,5 +1,10 @@
 # Roadmap
 
+- [x] Corrigir o mapa do Brasil com contorno geográfico real
+- [x] Compactar todas as faixas para acompanhar a estrutura do template
+- [x] Validar o resultado em celular, tablet e desktop
+- [x] Permitir ampliar a foto do perfil ao clicar ou manter pressionado
+
 - [x] Reestruturar o rodapé com citação, mapa pontilhado e sem formulário
 
 - [x] Replace the profile photo with the supplied portrait.
