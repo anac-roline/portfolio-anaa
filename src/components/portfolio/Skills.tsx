@@ -10,16 +10,16 @@ const skills = [
 
 export function Skills() {
   return (
-    <section id="skills" className="bg-charcoal py-16 text-paper sm:py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <div className="mb-10 flex items-end justify-between gap-8 sm:mb-14 lg:mb-16">
+    <section id="skills" className="bg-charcoal py-14 text-paper sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8">
+        <div className="mb-10 text-center">
           <div>
             <p className="section-kicker text-accent">Competências</p>
-            <h2 className="section-title text-paper">SKILLS</h2>
+            <h2 className="mt-2 font-sans text-2xl font-light uppercase text-paper sm:text-3xl">SKILLS</h2>
           </div>
-          <Code2 className="hidden h-10 w-10 text-accent sm:block" />
+          <Code2 className="mx-auto mt-4 h-6 w-6 text-accent" />
         </div>
-        <div className="grid grid-cols-1 gap-px border border-paper/15 bg-paper/15 min-[520px]:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 border-y border-paper/15 min-[520px]:grid-cols-2 lg:grid-cols-4">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
             return (
@@ -29,7 +29,7 @@ export function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="group bg-charcoal p-6 text-center sm:p-8 lg:p-10"
+                className="group border-b border-paper/15 p-7 text-center min-[520px]:border-r lg:border-b-0 lg:p-9 last:border-r-0"
               >
                 <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-paper/25 text-paper/70 transition-colors group-hover:border-accent group-hover:text-accent sm:h-20 sm:w-20">
                   <Icon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={1.25} />

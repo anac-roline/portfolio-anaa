@@ -10,11 +10,11 @@ const socials = [
 
 export function Contact() {
   return (
-    <section id="contact" className="bg-charcoal py-16 text-paper sm:py-24 lg:py-32">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
+    <section id="contact" className="bg-charcoal py-14 text-paper sm:py-20">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
         <div>
           <p className="section-kicker text-accent">Vamos conversar</p>
-          <h2 className="section-title text-paper">CONTATO</h2>
+          <h2 className="mt-2 font-sans text-2xl font-light uppercase text-paper sm:text-3xl">CONTATO</h2>
           <a className="mt-6 block max-w-full break-all font-heading text-2xl transition-colors hover:text-accent min-[420px]:break-words sm:mt-8 sm:text-4xl lg:text-5xl" href="mailto:lealanacaroline00@gmail.com">lealanacaroline00@gmail.com</a>
           <div className="mt-8 grid grid-cols-2 gap-2 min-[520px]:flex min-[520px]:flex-wrap sm:mt-10 sm:gap-3">
             {socials.map(({ label, href, icon: Icon }) => (
@@ -25,7 +25,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="relative flex min-h-52 items-center justify-center overflow-hidden border border-paper/10 bg-work sm:min-h-64">
+        <div className="map-grid relative flex min-h-52 items-center justify-center overflow-hidden border border-paper/10 bg-work sm:min-h-64">
           <div className="brazil-mark" aria-hidden="true">BR</div>
           <div className="relative z-10 text-center">
             <MapPin className="mx-auto h-8 w-8 text-accent" />
@@ -34,7 +34,7 @@ export function Contact() {
           </div>
         </div>
       </div>
-      <footer className="mx-auto mt-12 flex max-w-7xl flex-col gap-2 border-t border-paper/10 px-4 pt-7 text-xs text-paper/35 sm:mt-16 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:mt-20">
+      <footer className="mx-auto mt-12 flex max-w-6xl flex-col gap-2 border-t border-paper/10 px-4 pt-7 text-xs text-paper/35 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p>© {new Date().getFullYear()} Ana Nascimento</p><p>Desenvolvimento · Dados · BI</p>
       </footer>
     </section>
