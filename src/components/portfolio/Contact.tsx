@@ -1,41 +1,52 @@
-import { Github, Instagram, Linkedin, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
 
 const socials = [
   { label: "WhatsApp", href: "https://wa.me/5561993378679", icon: MessageCircle },
   { label: "Instagram", href: "https://instagram.com/anac_roline", icon: Instagram },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ana-c-l-nascimento-171680111", icon: Linkedin },
   { label: "GitHub", href: "https://github.com/anac-roline", icon: Github },
-  { label: "E-mail", href: "mailto:lealanacaroline00@gmail.com", icon: Mail },
 ];
 
 export function Contact() {
   return (
-    <section id="contact" className="bg-charcoal py-14 text-paper sm:py-20">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
-        <div>
-          <p className="section-kicker text-accent">Vamos conversar</p>
-          <h2 className="mt-2 font-sans text-2xl font-light uppercase text-paper sm:text-3xl">CONTATO</h2>
-          <a className="mt-6 block max-w-full break-all font-heading text-2xl transition-colors hover:text-accent min-[420px]:break-words sm:mt-8 sm:text-4xl lg:text-5xl" href="mailto:lealanacaroline00@gmail.com">lealanacaroline00@gmail.com</a>
-          <div className="mt-8 grid grid-cols-2 gap-2 min-[520px]:flex min-[520px]:flex-wrap sm:mt-10 sm:gap-3">
-            {socials.map(({ label, href, icon: Icon }) => (
-              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer noopener" className="inline-flex min-h-11 items-center justify-center gap-2 border border-paper/20 px-3 py-3 text-[10px] font-semibold uppercase text-paper/70 transition-colors hover:border-accent hover:text-accent sm:px-4 sm:text-xs">
-                <Icon className="h-4 w-4" />{label}
-              </a>
-            ))}
+    <section id="contact" className="bg-charcoal py-14 text-paper sm:py-16">
+      <h2 className="text-center font-sans text-xl font-light uppercase sm:text-2xl">CONTATO</h2>
+
+      <div className="mx-auto mt-9 grid max-w-5xl gap-12 px-5 sm:px-8 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-16">
+        <div className="max-w-md">
+          <p className="text-[10px] text-paper/45">para</p>
+          <a className="block break-all text-base font-semibold transition-colors hover:text-accent sm:text-lg" href="mailto:lealanacaroline00@gmail.com">lealanacaroline00@gmail.com</a>
+          <p className="mt-3 text-xs text-paper/55">Olá Ana, gostaria de conversar sobre uma oportunidade.</p>
+
+          <div className="mt-2 space-y-0" aria-hidden="true">
+            <span className="block h-px bg-paper/65" />
+            <span className="mt-5 block h-px bg-paper/65" />
+            <span className="mt-5 block h-px bg-paper/65" />
+          </div>
+
+          <div className="mt-2 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              {socials.map(({ label, href, icon: Icon }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer noopener" className="text-paper/50 transition-colors hover:text-accent" aria-label={label}>
+                  <Icon className="h-3.5 w-3.5" />
+                </a>
+              ))}
+            </div>
+            <a href="mailto:lealanacaroline00@gmail.com" className="text-[10px] font-semibold lowercase text-accent transition-colors hover:text-paper">enviar</a>
           </div>
         </div>
 
-        <div className="map-grid relative flex min-h-52 items-center justify-center overflow-hidden border border-paper/10 bg-work sm:min-h-64">
-          <div className="brazil-mark" aria-hidden="true">BR</div>
-          <div className="relative z-10 text-center">
-            <MapPin className="mx-auto h-8 w-8 text-accent" />
-            <p className="mt-3 text-[10px] font-semibold uppercase text-paper/40">Localização</p>
-            <p className="font-heading text-4xl">Brasil<span className="text-accent">.</span></p>
+        <div className="relative min-h-48 overflow-hidden sm:min-h-52" aria-label="Localização: Brasil">
+          <div className="brazil-dots" aria-hidden="true" />
+          <div className="absolute left-[58%] top-[47%] z-10 flex items-center gap-2">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_14px_var(--accent)]" />
+            <p className="whitespace-nowrap text-[10px] leading-tight text-paper/60">Eu moro no<br /><strong className="font-heading text-2xl font-normal text-paper">Brasil</strong></p>
           </div>
         </div>
       </div>
-      <footer className="mx-auto mt-12 flex max-w-6xl flex-col gap-2 border-t border-paper/10 px-4 pt-7 text-xs text-paper/35 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <p>© {new Date().getFullYear()} Ana Nascimento</p><p>Desenvolvimento · Dados · BI</p>
+
+      <footer className="mx-auto mt-10 flex max-w-5xl justify-between border-t border-paper/10 px-5 pt-5 text-[9px] uppercase text-paper/25 sm:px-8">
+        <p>© {new Date().getFullYear()} Ana Nascimento</p><p>Brasil</p>
       </footer>
     </section>
   );

@@ -2,6 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { useRef } from "react";
 import { ArrowDownRight, Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import profile from "@/assets/ana-profile-portrait.png";
+import brazilLandscape from "@/assets/brazil-landscape.jpg";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const nav = [
@@ -23,7 +24,10 @@ export function Hero() {
 
   return (
     <section ref={sectionRef} id="home" className="relative overflow-hidden bg-paper pt-14 text-ink sm:pt-16">
-      <div className="hero-masthead">
+      <div
+        className="hero-masthead"
+        style={{ backgroundImage: `linear-gradient(90deg, color-mix(in oklab, var(--charcoal) 74%, transparent), color-mix(in oklab, var(--charcoal) 25%, transparent)), url(${brazilLandscape})` }}
+      >
         <div className="mx-auto flex h-full max-w-6xl items-end px-4 pb-8 sm:px-8 sm:pb-10">
           <p className="ml-auto max-w-md text-right font-heading text-xl italic text-paper/80 sm:text-2xl">Tecnologia orientada por dados, construída com intenção.</p>
         </div>
