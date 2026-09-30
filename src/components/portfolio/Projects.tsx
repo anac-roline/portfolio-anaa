@@ -143,7 +143,7 @@ export function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="project-texture relative bg-work py-14 text-paper sm:py-20">
+    <section id="projects" className="project-texture relative bg-work py-12 text-paper sm:py-14">
       <div className="mx-auto max-w-5xl px-4 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -168,7 +168,7 @@ export function Projects() {
           </a>
         </motion.div>
 
-        <div className="mt-10 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
+        <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
           {projects.map((p, i) => (
             <motion.article
               key={p.title}

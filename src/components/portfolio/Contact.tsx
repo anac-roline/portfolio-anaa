@@ -1,4 +1,5 @@
 import { Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import brazilMap from "@/assets/brazil-dotted.svg";
 
 const socials = [
   { label: "WhatsApp", href: "https://wa.me/5561993378679", icon: MessageCircle },
@@ -10,13 +11,13 @@ const socials = [
 export function Contact() {
   return (
     <section id="contact" className="bg-charcoal text-paper">
-      <div className="mx-auto max-w-5xl px-5 pb-14 pt-16 sm:px-8 sm:pb-16 sm:pt-20">
+      <div className="mx-auto max-w-5xl px-5 pb-10 pt-12 sm:px-8 sm:pb-12 sm:pt-14">
         <h2 className="text-center font-sans text-xl font-light uppercase sm:text-2xl">CONTATO</h2>
 
-        <div className="mt-12 grid gap-14 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-16">
-          <div className="max-w-md md:pb-6">
+        <div className="mt-10 grid gap-8 md:grid-cols-[0.92fr_1.08fr] md:items-center md:gap-16">
+          <div className="max-w-md">
             <blockquote className="border-l border-accent pl-5 sm:pl-7">
-              <p className="font-heading text-3xl leading-tight sm:text-4xl">
+              <p className="font-heading text-2xl leading-tight sm:text-3xl">
                 “A melhor maneira de prever o futuro é inventá-lo.”
               </p>
               <footer className="mt-5 text-[10px] font-semibold uppercase text-paper/45">
@@ -40,9 +41,9 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="relative min-h-64 overflow-hidden sm:min-h-72" aria-label="Localização: Brasil">
-            <div className="brazil-dots" aria-hidden="true" />
-            <div className="absolute left-[56%] top-[51%] z-10 flex items-center gap-2">
+          <div className="relative mx-auto aspect-[613/639] w-full max-w-[260px] sm:max-w-[290px]" aria-label="Localização: Brasil">
+            <img src={brazilMap} alt="" className="absolute inset-0 h-full w-full object-contain opacity-60" aria-hidden="true" />
+            <div className="absolute left-[58%] top-[61%] z-10 flex items-center gap-2">
               <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-accent shadow-[0_0_14px_var(--accent)]" />
               <p className="whitespace-nowrap text-[10px] leading-tight text-paper/55">
                 I Live in<br /><strong className="font-heading text-3xl font-normal text-paper">Brasil</strong>

@@ -190,7 +190,7 @@
   .social-icon svg { height: 1rem; width: 1rem; }
   .bg-work-overlay { background: linear-gradient(to top, color-mix(in oklab, var(--charcoal) 88%, transparent), transparent 60%); }
   .hero-masthead {
-    height: clamp(13rem, 28vw, 22rem);
+    height: clamp(12rem, 24vw, 18rem);
     background-color: var(--work);
     background-position: center 55%;
     background-repeat: no-repeat;
@@ -199,14 +199,6 @@
   .timeline-paper {
     background-color: var(--paper);
     background-image: repeating-linear-gradient(0deg, transparent 0 31px, color-mix(in oklab, var(--ink) 4%, transparent) 32px);
-  }
-  .brazil-dots {
-    position: absolute;
-    inset: 0.5rem 0;
-    opacity: 0.28;
-    background-image: radial-gradient(circle, var(--paper) 1px, transparent 1.4px);
-    background-size: 7px 7px;
-    clip-path: polygon(39% 2%, 52% 7%, 58% 15%, 69% 17%, 74% 25%, 86% 30%, 91% 42%, 83% 52%, 79% 65%, 68% 71%, 60% 83%, 50% 98%, 42% 85%, 35% 72%, 25% 65%, 18% 51%, 8% 41%, 16% 31%, 13% 20%, 27% 16%);
   }
   .project-texture {
     background-image:
