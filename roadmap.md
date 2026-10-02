@@ -16,4 +16,5 @@
 - [x] Remove the sentence over the Brazilian landscape.
 - [x] Replace the top navigation bar with a floating menu button over the landscape.
 - [x] Integrar os posts do Instagram em um mosaico editorial inspirado no template.
-- [ ] Tornar o carregamento das imagens progressivo e agradável, sem saltos visuais.
+- [x] Aproximar a composição do template e destacar visualmente os trabalhos de TI.
+- [x] Tornar o carregamento das imagens progressivo e agradável, sem saltos visuais.

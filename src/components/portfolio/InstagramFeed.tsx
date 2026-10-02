@@ -7,6 +7,7 @@ const WIDGET_SCRIPT = "https://w.behold.so/widget.js";
 
 export function InstagramFeed() {
   const [singlePost, setSinglePost] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (document.querySelector(`script[src="${WIDGET_SCRIPT}"]`)) return;
@@ -16,6 +17,11 @@ export function InstagramFeed() {
     script.src = WIDGET_SCRIPT;
     script.dataset.beholdWidget = "true";
     document.head.append(script);
+  }, []);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setReady(true), 900);
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -51,8 +57,9 @@ export function InstagramFeed() {
         </a>
       </motion.div>
 
-      <div className="border-y border-ink/10 bg-charcoal py-0 sm:py-8">
-        <div className={`instagram-mosaic mx-auto overflow-hidden ${singlePost ? "instagram-mosaic-single max-w-xl" : "max-w-6xl"}`}>
+      <div className="border-y border-ink/10 bg-charcoal py-4 sm:py-8">
+        <div className={`instagram-mosaic relative mx-auto overflow-hidden transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-75"} ${singlePost ? "instagram-mosaic-single max-w-xl" : "max-w-6xl"}`}>
+          {!ready && <div className="instagram-loader absolute inset-0 z-10" aria-label="Carregando publicações do Instagram" />}
           {createElement("behold-widget", {
             "feed-id": FEED_ID,
             className: "block w-full",
