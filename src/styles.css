@@ -211,6 +211,9 @@
     width: 100%;
     min-height: 14rem;
   }
+  .instagram-mosaic-single behold-widget {
+    width: 300%;
+  }
   .text-gradient {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-glow) 100%);
     -webkit-background-clip: text;

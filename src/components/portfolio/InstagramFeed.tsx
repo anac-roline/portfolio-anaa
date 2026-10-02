@@ -1,4 +1,4 @@
-import { createElement, useEffect } from "react";
+import { createElement, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Instagram } from "lucide-react";
 
@@ -6,6 +6,8 @@ const FEED_ID = "nLd23bPIQVPQKoUzaMEn";
 const WIDGET_SCRIPT = "https://w.behold.so/widget.js";
 
 export function InstagramFeed() {
+  const [singlePost, setSinglePost] = useState(false);
+
   useEffect(() => {
     if (document.querySelector(`script[src="${WIDGET_SCRIPT}"]`)) return;
 
@@ -14,6 +16,17 @@ export function InstagramFeed() {
     script.src = WIDGET_SCRIPT;
     script.dataset.beholdWidget = "true";
     document.head.append(script);
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(`https://feeds.behold.so/${FEED_ID}`, { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((feed: { posts?: unknown[] } | null) => setSinglePost(feed?.posts?.length === 1))
+      .catch(() => undefined);
+
+    return () => controller.abort();
   }, []);
 
   return (
@@ -38,11 +51,13 @@ export function InstagramFeed() {
         </a>
       </motion.div>
 
-      <div className="instagram-mosaic border-y border-ink/10 bg-charcoal">
-        {createElement("behold-widget", {
-          "feed-id": FEED_ID,
-          className: "block min-h-56 w-full sm:min-h-72",
-        })}
+      <div className="border-y border-ink/10 bg-charcoal py-0 sm:py-8">
+        <div className={`instagram-mosaic mx-auto overflow-hidden ${singlePost ? "instagram-mosaic-single max-w-xl" : "max-w-6xl"}`}>
+          {createElement("behold-widget", {
+            "feed-id": FEED_ID,
+            className: "block w-full",
+          })}
+        </div>
       </div>
     </section>
   );
