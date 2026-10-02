@@ -5,6 +5,7 @@ import { Projects } from "@/components/portfolio/Projects";
 import { Timeline } from "@/components/portfolio/Timeline";
 import { Contact } from "@/components/portfolio/Contact";
 import { WhatsAppFab } from "@/components/portfolio/WhatsAppFab";
+import { InstagramFeed } from "@/components/portfolio/InstagramFeed";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Skills />
       <Projects />
       <Timeline />
+      <InstagramFeed />
       <Contact />
       <WhatsAppFab />
     </main>

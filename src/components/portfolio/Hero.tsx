@@ -11,6 +11,7 @@ const nav = [
   ["#skills", "Skills"],
   ["#projects", "Work"],
   ["#timeline", "Trajetória"],
+  ["#instagram", "Instagram"],
   ["#contact", "Contato"],
 ];
 

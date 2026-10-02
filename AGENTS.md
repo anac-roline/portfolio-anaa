@@ -3,3 +3,4 @@
 - Keep the portfolio as a single-page React/Vite experience; this preserves static Vercel deployment and direct section navigation.
 - Structure the page as full-width editorial bands with one shared responsive rail; this mirrors the supplied template without embedding the reference image.
 - Render Brazil from accurate state-boundary SVG geometry rather than an approximate CSS polygon; recognizable geography is essential to the footer concept.
+- Load the Instagram gallery through Behold's custom-element widget inside a dedicated React section; this keeps social content current without storing post media locally.

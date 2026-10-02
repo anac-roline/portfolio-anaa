@@ -15,3 +15,4 @@
 - [x] Recreate the compact contact footer from the supplied template.
 - [x] Remove the sentence over the Brazilian landscape.
 - [x] Replace the top navigation bar with a floating menu button over the landscape.
+- [x] Integrar os posts do Instagram em um mosaico editorial inspirado no template.
