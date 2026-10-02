@@ -206,6 +206,11 @@
       linear-gradient(-45deg, color-mix(in oklab, var(--charcoal) 14%, transparent) 25%, transparent 25%);
     background-size: 14px 14px;
   }
+  .instagram-mosaic behold-widget {
+    display: block;
+    width: 100%;
+    min-height: 14rem;
+  }
   .text-gradient {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-glow) 100%);
     -webkit-background-clip: text;
