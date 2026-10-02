@@ -60,7 +60,7 @@ export function Hero() {
         <div className="mx-auto h-full max-w-6xl" />
       </div>
       <div className="mx-auto max-w-6xl px-4 sm:px-8">
-        <div className="relative grid grid-cols-1 gap-7 pb-10 pt-20 sm:pb-14 sm:pt-24 lg:min-h-[300px] lg:grid-cols-[120px_170px_1fr] lg:items-center lg:gap-8 lg:py-10">
+        <div className="relative grid grid-cols-1 gap-7 pb-10 pt-20 sm:pb-12 sm:pt-24 lg:min-h-[286px] lg:grid-cols-[120px_170px_1fr] lg:items-center lg:gap-8 lg:py-8">
           <aside className="hidden lg:block">
             <nav aria-label="Navegação da apresentação">
               <ul className="relative space-y-4 border-l border-ink/25 pl-5">
@@ -120,8 +120,8 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="bg-secondary py-5 text-ink sm:py-6">
-        <p className="mx-auto max-w-4xl px-5 text-center font-heading text-lg italic leading-snug text-ink/75 sm:px-6 sm:text-xl">
+      <div className="bg-secondary py-5 text-paper sm:py-6">
+        <p className="mx-auto max-w-4xl px-5 text-center font-sans text-base font-light italic leading-snug text-paper/75 sm:px-6 sm:text-lg">
           “Dados contam histórias. Código transforma essas histórias em experiências.”
         </p>
       </div>

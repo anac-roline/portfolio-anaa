@@ -189,6 +189,7 @@
   .social-icon:hover { border-color: var(--accent); color: var(--accent); }
   .social-icon svg { height: 1rem; width: 1rem; }
   .bg-work-overlay { background: linear-gradient(to top, color-mix(in oklab, var(--charcoal) 88%, transparent), transparent 60%); }
+  .bg-work-overlay-strong { background: linear-gradient(to top, color-mix(in oklab, var(--charcoal) 96%, transparent), color-mix(in oklab, var(--charcoal) 12%, transparent) 72%); }
   .hero-masthead {
     height: clamp(12rem, 24vw, 18rem);
     background-color: var(--work);
@@ -206,13 +207,25 @@
       linear-gradient(-45deg, color-mix(in oklab, var(--charcoal) 14%, transparent) 25%, transparent 25%);
     background-size: 14px 14px;
   }
+  .work-gallery .work-featured { grid-column: span 2; aspect-ratio: 2 / 1; }
+  .work-gallery img { filter: grayscale(78%) contrast(1.03); }
+  .work-gallery article:hover img { filter: grayscale(0%) contrast(1); transform: scale(1.025); }
+  .project-image-loader,
+  .instagram-loader {
+    background: linear-gradient(100deg, var(--charcoal) 20%, var(--work) 45%, var(--charcoal) 70%);
+    background-size: 220% 100%;
+    animation: image-shimmer 1.35s ease-in-out infinite;
+  }
+  .project-image-loader { position: absolute; inset: 0; transition: opacity 500ms ease; }
+  .project-image-loader.is-loaded { opacity: 0; pointer-events: none; }
+  @keyframes image-shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
   .instagram-mosaic behold-widget {
     display: block;
     width: 100%;
     min-height: 14rem;
   }
   .instagram-mosaic-single behold-widget {
-    width: 300%;
+    width: 100%;
   }
   .text-gradient {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-glow) 100%);
@@ -246,5 +259,11 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .animate-float { animation: none; }
+    .project-image-loader,
+    .instagram-loader { animation: none; }
+  }
+
+  @media (max-width: 767px) {
+    .work-gallery .work-featured { grid-column: span 2; aspect-ratio: 16 / 9; }
   }
 }

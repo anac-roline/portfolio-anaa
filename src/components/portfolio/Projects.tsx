@@ -9,6 +9,7 @@ import lixeiraImg from "@/assets/project-lixeira.jpg";
 import notasImg from "@/assets/project-notas.png";
 import hackathonImg from "@/assets/project-hackathon.jpg";
 import checklistImg from "@/assets/project-checklist.png";
+import arduinoImg from "@/assets/project-arduino.jpg";
 
 type Project = {
   title: string;
@@ -23,6 +24,13 @@ type Project = {
   demo?: string;
   category: string;
   highlights: string[];
+};
+
+type GalleryItem = {
+  projectIndex: number;
+  image: string;
+  label?: string;
+  featured?: boolean;
 };
 
 const projects: Project[] = [
@@ -139,12 +147,42 @@ const projects: Project[] = [
   },
 ];
 
+const galleryItems: GalleryItem[] = [
+  { projectIndex: 0, image: hackathonImg, featured: true },
+  { projectIndex: 3, image: apiImg },
+  { projectIndex: 4, image: notasImg, featured: true },
+  { projectIndex: 5, image: lixeiraImg },
+  { projectIndex: 2, image: esteticaImg },
+  { projectIndex: 5, image: arduinoImg, label: "Protótipo Arduino" },
+  { projectIndex: 1, image: checklistImg },
+];
+
+function ProjectImage({ item, title }: { item: GalleryItem; title: string }) {
+  const [loaded, setLoaded] = useState(false);
+  const project = projects[item.projectIndex];
+
+  return (
+    <>
+      <span className={`project-image-loader ${loaded ? "is-loaded" : ""}`} aria-hidden="true" />
+      <img
+        src={item.image}
+        alt={item.label ?? title}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        style={{ objectPosition: project.imagePosition ?? "center" }}
+        className={`h-full w-full transition-[opacity,filter,transform] duration-700 ${loaded ? "opacity-100" : "opacity-0"} ${project.imageFit === "contain" ? "object-contain p-2" : "object-cover"}`}
+      />
+    </>
+  );
+}
+
 export function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="project-texture relative bg-work py-12 text-paper sm:py-14">
-      <div className="mx-auto max-w-5xl px-4 sm:px-8">
+    <section id="projects" className="project-texture relative bg-work py-12 text-paper sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -155,7 +193,7 @@ export function Projects() {
           <div className="mx-auto max-w-2xl">
             <p className="section-kicker text-accent">Projetos selecionados</p>
             <h2 className="mt-2 font-sans text-2xl font-light uppercase text-paper sm:text-3xl">WORK</h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm text-paper/55">Aplicações, experiências e protótipos que unem tecnologia, dados e solução de problemas.</p>
+            <p className="mx-auto mt-3 max-w-xl text-xs leading-5 text-paper/50">Uma seleção visual de interfaces, sistemas e protótipos desenvolvidos em tecnologia.</p>
           </div>
           <a
             href="https://github.com/anac-roline"
@@ -168,15 +206,17 @@ export function Projects() {
           </a>
         </motion.div>
 
-        <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-          {projects.map((p, i) => (
+        <div className="work-gallery mt-8 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+          {galleryItems.map((item, i) => {
+            const p = projects[item.projectIndex];
+            return (
             <motion.article
-              key={p.title}
+              key={`${p.title}-${item.image}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="group relative aspect-[4/3] overflow-hidden bg-charcoal"
+              className={`group relative overflow-hidden border border-paper/10 bg-charcoal ${item.featured ? "work-featured" : "aspect-[4/3]"}`}
             >
               <Button
                 type="button"
@@ -185,24 +225,15 @@ export function Projects() {
                 aria-label={`Ver detalhes de ${p.title}`}
                 className="relative block h-full w-full overflow-hidden rounded-none bg-paper p-0 focus-visible:ring-2 focus-visible:ring-accent"
               >
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  loading="lazy"
-                  style={{ objectPosition: p.imagePosition ?? "center", transform: p.imageScale ? `scale(${p.imageScale})` : undefined }}
-                  className={`h-full w-full grayscale-[65%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 ${
-                    (p.imageFit ?? "contain") === "cover"
-                      ? "object-cover"
-                      : "object-contain p-2"
-                  }`}
-                />
-                <span className="absolute inset-0 flex flex-col justify-end bg-work-overlay p-3 text-left sm:p-4">
+                <ProjectImage item={item} title={p.title} />
+                <span className="absolute inset-0 flex flex-col justify-end bg-work-overlay p-3 text-left transition-colors duration-300 group-hover:bg-work-overlay-strong sm:p-4">
                   <span className="text-[9px] font-semibold uppercase text-accent">{p.category}</span>
-                  <span className="mt-1 whitespace-normal font-heading text-lg leading-tight text-paper sm:text-xl">{p.title}</span>
+                  <span className="mt-1 whitespace-normal font-heading text-lg leading-tight text-paper sm:text-xl">{item.label ?? p.title}</span>
                 </span>
               </Button>
             </motion.article>
-          ))}
+            );
+          })}
         </div>
       </div>
 
